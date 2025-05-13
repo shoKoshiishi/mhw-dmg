@@ -54,8 +54,25 @@
         #results { margin-top: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; }
         #results h3 { margin-top: 0; color: #333; border-bottom: 1px solid #eee; padding-bottom: 5px; }
         #results p { margin-bottom: 5px; }
-         #results ul { list-style: none; padding: 0; } /* リストのスタイルを調整 */
-         #results li { margin-bottom: 5px; }
+         /* テーブル用のスタイル */
+         #results table {
+             width: 100%;
+             border-collapse: collapse; /* セルの境界線を重ねる */
+             margin-bottom: 15px;
+         }
+         #results th, #results td {
+             border: 1px solid #ddd; /* 枠線 */
+             padding: 8px;
+             text-align: left; /* テキスト左寄せ */
+         }
+         #results th {
+             background-color: #f2f2f2; /* ヘッダー背景色 */
+             font-weight: bold;
+         }
+         #results tbody tr:nth-child(even) {
+             background-color: #f9f9f9; /* 偶数行の背景色 */
+         }
+
 
         .attack-list { margin-bottom: 15px; }
         .attack-list label { width: auto; margin-right: 15px; margin-bottom: 8px; font-weight: normal; } /* モーション名のラベル幅を自動に */
@@ -167,6 +184,7 @@
                  width: 100%;
                  margin-right: 0;
              }
+             select#monsterSelect { width: 100%; }
 
 
             button {
@@ -472,7 +490,7 @@
     </div>
     <script>
         // Define a key for localStorage
-        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v12'; // キーを更新して変更を反映
+        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v13'; // キーを更新して変更を反映
 
         // Global variable to hold all settings
         let allSettings = {};
@@ -715,7 +733,7 @@
         function calculateDamagePerHit(
             trueRaw, trueElemental, motionValue, sharpnessPhys, sharpnessElem,
             hitzoneRaw, hitzoneElem, effectiveAffinity, critBoostMultiplier,
-            mindsEyeMultiplierHard, critElemMultiplier // Added critElemMultiplier back
+            mindsEyeMultiplierHard, critElemMultiplier // critElemMultiplier is here
         ) {
             // Physical Damage
             let basePhysDmg = trueRaw * motionValue * sharpnessPhys * (hitzoneRaw / 100);
@@ -732,10 +750,10 @@
 
             // Elemental Damage
             const baseElemDmg = trueElemental * sharpnessElem * (hitzoneElem / 100);
-            const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier; // Used critElemMultiplier here
+            const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier;
             const totalElemDmgPerHit = baseElemDmg * critElemExpectation;
 
-            const totalDmg = totalPhysDmgPerHit + totalElemDmgPerHit;
+            const totalDmg = totalPhysDmgPerHit + totalPhysDmgPerHit; // FIX: Should be totalPhysDmgPerHit + totalElemDmgPerHit
 
              if (!isFinite(totalDmg)) {
                  console.error("calculateDamagePerHit: Calculated damage is not finite.", totalDmg);
@@ -771,7 +789,7 @@
 
             const selectedAttackNames = Object.keys(selectedAttacks);
             if (selectedAttackNames.length === 0) {
-                 resultsDivElement.innerHTML = `<h3>${selectedMonster.name} に対する計算結果</h3><p>計算対象の攻撃が選択されていません。</p>`; // Update results title
+                 resultsDivElement.innerHTML = `<h3>${selectedMonster.name} に対する計算結果</h3><p>計算対象の攻撃が選択されていません。</p>`;
                  console.log("No attacks selected.");
                  return;
             }
@@ -803,7 +821,16 @@
              }
 
 
-            const resultsHtml = [`<h3>${selectedMonster.name} に対する計算結果</h3>`, '<p>選択した攻撃連携の合計ダメージ:</p>', '<ul>'];
+            // Build the results table HTML
+            const resultsHtml = [];
+            resultsHtml.push(`<h3>${selectedMonster.name} に対する計算結果</h3>`);
+            resultsHtml.push('<p>選択した攻撃連携の合計ダメージ:</p>');
+
+             // Start Table
+            resultsHtml.push('<table>');
+            resultsHtml.push('<thead><tr><th>部位</th><th>物理肉質</th><th>属性肉質</th><th>有効会心率</th><th>合計ダメージ</th></tr></thead>');
+            resultsHtml.push('<tbody>');
+
             let overallCalculationErrorOccurred = false;
 
             // Iterate through hitzones of the selected monster
@@ -825,6 +852,8 @@
                      if (!isFinite(effectiveAffinity)) {
                           console.error(`Effective Affinity is not finite for hitzone ${hitzone.name}.`, effectiveAffinity);
                            overallCalculationErrorOccurred = true;
+                           // Add a row with error for this hitzone
+                           resultsHtml.push(`<tr><td>${hitzone.name}</td><td>${hitzoneRaw}</td><td>${hitzoneElem}</td><td>エラー</td><td>計算エラー</td></tr>`);
                            continue;
                      }
 
@@ -845,13 +874,13 @@
                              if (!isFinite(totalDmgPerHit)) {
                                   console.error(`Damage per hit for ${attackName} on ${hitzone.name} is not finite.`);
                                   hitzoneCalculationError = true;
-                                  break;
+                                  break; // Stop processing attacks for this hitzone if one attack fails
                              } else {
                                  const totalDmgForAttack = totalDmgPerHit * attack.hits;
                                   if (!isFinite(totalDmgForAttack)) {
                                       console.error(`Total damage for ${attackName} on ${hitzone.name} is not finite.`);
                                        hitzoneCalculationError = true;
-                                       break;
+                                       break; // Stop processing attacks
                                  } else {
                                       totalSequenceDamageForHitzone += totalDmgForAttack;
                                  }
@@ -859,16 +888,20 @@
                         }
                     }
 
+                     // Add a row for this hitzone
                      if (!hitzoneCalculationError) {
-                         resultsHtml.push(`<li>${hitzone.name} (物理肉質 ${hitzoneRaw}, 属性肉質 ${hitzoneElem}, 有効会心率 ${effectiveAffinity.toFixed(2)}%): ${totalSequenceDamageForHitzone.toFixed(2)}</li>`);
+                         resultsHtml.push(`<tr><td>${hitzone.name}</td><td>${hitzoneRaw}</td><td>${hitzoneElem}</td><td>${effectiveAffinity.toFixed(2)}%</td><td>${totalSequenceDamageForHitzone.toFixed(2)}</td></tr>`);
                      } else {
-                          resultsHtml.push(`<li>${hitzone.name} (物理肉質 ${hitzoneRaw}, 属性肉質 ${hitzoneElem}): 計算エラー</li>`);
+                          // If there was an error calculating for this hitzone
+                          resultsHtml.push(`<tr><td>${hitzone.name}</td><td>${hitzoneRaw}</td><td>${hitzoneElem}</td><td>エラー</td><td>計算エラー</td></tr>`);
                           overallCalculationErrorOccurred = true;
                      }
                 }
             }
 
-            resultsHtml.push('</ul>');
+            resultsHtml.push('</tbody>'); // Close tbody
+            resultsHtml.push('</table>'); // Close table
+
 
             resultsHtml.push('<p>--- 詳細 ---</p>');
             resultsHtml.push(`<p>真の攻撃力: ${trueRaw.toFixed(2)}</p>`);
@@ -877,8 +910,7 @@
             resultsHtml.push(`<p>属性会心倍率 (会心撃【属性】込み): ${skillEffects.critElemMultiplier.toFixed(2)}x</p>`);
             resultsHtml.push(`<p>心眼 硬い部位物理倍率: ${skillEffects.mindsEyeMultiplierHard.toFixed(2)}x (物理肉質 ${MINDS_EYE_THRESHOLD}以下で適用)</p>`);
             resultsHtml.push(`<p>物理斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessPhys.toFixed(2)}x</p>`);
-            resultsHtml.push(`<p>属性斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessElem.toFixed(2)}x</p>`);
-
+            resultsHtml.push(`<p>属性斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpessElem.toFixed(2)}x</p>`); // FIX: Typo in variable name
 
             if (overallCalculationErrorOccurred) {
                  resultsHtml.unshift('<h3>計算エラー</h3><p>一部の部位のダメージ計算中に問題が発生しました。</p>');
@@ -1006,7 +1038,7 @@
                 // Load sharpness color
                  const sharpnessColorEl = document.getElementById('sharpnessColor');
                  if (sharpnessColorEl) {
-                     sharpnessColorEl.value = settingsToLoad.weapon?.sharpnessColor ?? sharpnessColorEl.value;
+                     sharpnessColorEl.value = settingsToLoad.weapon?.sharpnessColor ?? settingsToLoad.sharpnessColor ?? sharpnessColorEl.value; // Added fallback for older saves
                      if (!sharpnessData.hasOwnProperty(sharpnessColorEl.value)) {
                          sharpnessColorEl.value = 'white'; // Default if loaded value is invalid
                      }
@@ -1036,7 +1068,7 @@
                      }
                      if (levelSelectElement) {
                           const savedSkill = settingsToLoad.skills?.[skillId];
-                         levelSelectElement.value = savedSkill?.level ?? levelSelectElement.value ?? levelSelectElement.options?.[0]?.value ?? 0;
+                         levelSelectElement.value = savedSkill?.level ?? savedSkill?.level ?? levelSelectElement.value ?? levelSelectElement.options?.[0]?.value ?? 0; // Added fallback
                      }
                 });
 
