@@ -231,4 +231,1219 @@
              </select>
         </div>
         <div class="skill-item">
-            <input
+            <input type="checkbox" id="skillMindsEyeToggle" data-skill-id="mindsEye">
+            <label for="skillMindsEyeToggle">心眼</label>
+             <select id="skillMindsEyeLevelSelect" data-skill-id="mindsEye" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3" selected>Lv3</option>
+             </select>
+        </div>
+        <div class="skill-item">
+            <input type="checkbox" id="skillCritElemToggle" data-skill-id="critElem">
+            <label for="skillCritElemToggle">会心撃【属性】</label>
+             <select id="skillCritElemLevelSelect" data-skill-id="critElem" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3">Lv3</option><option value="4">Lv4</option><option value="5" selected>Lv5</option>
+             </select>
+        </div>
+        <p>※武器固有のRaw/属性値スキルは入力項目に移動しました。</p>
+
+        <div class="skill-category-title">防具スキル</div>
+        <div class="skill-item">
+            <input type="checkbox" id="skillPeakPerformanceToggle" data-skill-id="peakPerformance">
+            <label for="skillPeakPerformanceToggle">フルチャージ</label>
+             <select id="skillPeakPerformanceLevelSelect" data-skill-id="peakPerformance" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3">Lv3</option><option value="4">Lv4</option><option value="5" selected>Lv5</option>
+             </select>
+        </div>
+        <div class="skill-item">
+            <input type="checkbox" id="skillInverseToggle" data-skill-id="inverse">
+            <label for="skillInverseToggle">逆襲</label>
+             <select id="skillInverseLevelSelect" data-skill-id="inverse" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3" selected>Lv3</option>
+             </select>
+        </div>
+         <div class="skill-item">
+            <input type="checkbox" id="skillAgitatorToggle" data-skill-id="agitator">
+            <label for="skillAgitatorToggle">挑戦者</label>
+             <select id="skillAgitatorLevelSelect" data-skill-id="agitator" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3">Lv3</option><option value="4">Lv4</option><option value="5" selected>Lv5</option>
+             </select>
+        </div>
+         <div class="skill-item">
+            <input type="checkbox" id="skillMaximumMightToggle" data-skill-id="maximumMight">
+            <label for="skillMaximumMightToggle">渾身</label>
+             <select id="skillMaximumMightLevelSelect" data-skill-id="maximumMight" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3" selected>Lv3</option>
+             </select>
+        </div>
+         <div class="skill-item">
+            <input type="checkbox" id="skillLatentPowerToggle" data-skill-id="latentPower">
+            <label for="skillLatentPowerToggle">力の解放</label>
+             <select id="skillLatentPowerLevelSelect" data-skill-id="latentPower" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3">Lv3</option><option value="4">Lv4</option><option value="5" selected>Lv5</option>
+             </select>
+        </div>
+         <div class="skill-item">
+            <input type="checkbox" id="skillChainCritToggle" data-skill-id="chainCrit">
+            <label for="skillChainCritToggle">連撃</label>
+             <select id="skillChainCritLevelSelect" data-skill-id="chainCrit" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3" selected>Lv3</option>
+             </select>
+        </div>
+         <div class="skill-item">
+            <input type="checkbox" id="skillOffensiveGuardToggle" data-skill-id="offensiveGuard">
+            <label for="skillOffensiveGuardToggle">巧撃</label>
+             <select id="skillOffensiveGuardLevelSelect" data-skill-id="offensiveGuard" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3" selected>Lv3</option>
+             </select>
+        </div>
+         <div class="skill-item">
+            <input type="checkbox" id="skillAbsorptionToggle" data-skill-id="absorption">
+            <label for="skillAbsorptionToggle">属性吸収</label>
+             <select id="skillAbsorptionLevelSelect" data-skill-id="absorption" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3" selected>Lv3</option>
+             </select>
+        </div>
+        <div class="skill-item">
+            <input type="checkbox" id="skillWeaknessExploitToggle" data-skill-id="weaknessExploit">
+            <label for="skillWeaknessExploitToggle">弱点特攻</label>
+             <select id="skillWeaknessExploitLevelSelect" data-skill-id="weaknessExploit" disabled>
+                 <option value="0">Lv0</option><option value="1">Lv1</option><option value="2">Lv2</option><option value="3">Lv3</option><option value="4">Lv4</option><option value="5" selected>Lv5</option>
+             </select>
+        </div>
+
+
+        <div class="skill-category-title">グループスキル (セットボーナス等)</div>
+        <div class="skill-item">
+             <input type="checkbox" id="skillNushiNoTamashiiToggle" data-skill-id="nushiNoTamashii">
+             <label for="skillNushiNoTamashiiToggle">ヌシの魂 Lv1 (根性【果敢】発動前)</label>
+             </div>
+
+
+        <div class="section-title">攻撃連携シミュレーション</div>
+        <p>連携に含めたい攻撃にチェックを入れてください。選択された攻撃の合計ダメージを計算します。<br>※多段ヒット攻撃は「1ヒットあたりのMV」と「合計ヒット数」を元に、攻撃全体の合計ダメージを計算します。</p>
+        <div class="attack-list">
+            <div class="attack-group-title">基本攻撃</div>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.24" data-hits="1" data-name="縦斬り"> 縦斬り (MV: 0.24)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="縦斬り(2)"> 縦斬り(2) (MV: 0.18)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.32" data-hits="1" data-name="逆袈裟斬り"> 逆袈裟斬り (MV: 0.32)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="突き"> 突き (MV: 0.18)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="斬り上げ"> 斬り上げ (MV: 0.18)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.22" data-hits="1" data-name="斬り下がり"> 斬り下がり (MV: 0.22)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.22" data-hits="1" data-name="左右移動斬り"> 左右移動斬り (MV: 0.22)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.26" data-hits="1" data-name="鬼人切りI"> 鬼人切りI (MV: 0.26)</label><br> <label><input type="checkbox" class="attack-checkbox" data-mv="0.30" data-hits="1" data-name="赤刃切りI"> 赤刃切りI (MV: 0.30)</label><br> <div class="attack-group-title">気刃斬り連携</div>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.28" data-hits="1" data-name="気刃踏み込み斬り"> 気刃踏み込み斬り (MV: 0.28)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.14" data-hits="1" data-name="気刃斬りⅠ(ゲージ無し)"> 気刃斬りⅠ(ゲージ無し) (MV: 0.14)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.31" data-hits="1" data-name="気刃斬りⅠ"> 気刃斬りⅠ (MV: 0.31)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.30" data-hits="1" data-name="気刃斬りⅡ"> 気刃斬りⅡ (MV: 0.30)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.14" data-hits="1" data-name="気刃斬りⅡ(移動) ヒット1"> 気刃斬りⅡ(移動) ヒット1 (MV: 0.14)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.26" data-hits="1" data-name="気刃斬りⅡ(移動) ヒット2"> 気刃斬りⅡ(移動) ヒット2 (MV: 0.26)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.14" data-hits="1" data-name="気刃斬りⅢ ヒット1"> 気刃斬りⅢ ヒット1 (MV: 0.14)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.19" data-hits="1" data-name="気刃斬りⅢ ヒット2"> 気刃斬りⅢ ヒット2 (MV: 0.19)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.34" data-hits="1" data-name="気刃斬りⅢ ヒット3"> 気刃斬りⅢ ヒット3 (MV: 0.34)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.38" data-hits="1" data-name="気刃大回転斬り"> 気刃大回転斬り (MV: 0.38)</label><br>
+             <div class="attack-group-title">居合・見切り・赤刃</div>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="居合抜刀斬り ヒット1"> 居合抜刀斬り ヒット1 (MV: 0.18)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.13" data-hits="1" data-name="居合抜刀斬り ヒット2"> 居合抜刀斬り ヒット2 (MV: 0.13)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.17" data-hits="1" data-name="居合抜刀気刃斬り (ゲージ無し?)"> 居合抜刀気刃斬り (MV: 0.17)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.19" data-hits="1" data-name="居合抜刀気刃斬り白"> 居合抜刀気刃斬り白 (MV: 0.19)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.31" data-hits="1" data-name="居合抜刀気刃斬り黄"> 居合抜刀気刃斬り黄 (MV: 0.31)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.39" data-hits="1" data-name="居合抜刀気刃斬り赤"> 居合抜刀気刃斬り赤 (MV: 0.39)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.11" data-hits="1" data-name="見切り斬り"> 見切り斬り (MV: 0.11)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.20" data-hits="1" data-name="見切り斬り・旋 ヒット1"> 見切り斬り・旋 ヒット1 (MV: 0.20)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.12" data-hits="1" data-name="見切り斬り・旋 ヒット2"> 見切り斬り・旋 ヒット2 (MV: 0.12)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.09" data-hits="1" data-name="赤刃斬りⅡ ヒット1"> 赤刃斬りⅡ ヒット1 (MV: 0.09)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="赤刃斬りⅡ ヒット2"> 赤刃斬りⅡ ヒット2 (MV: 0.18)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.28" data-hits="1" data-name="赤刃斬りⅢ ヒット1"> 赤刃斬りⅢ ヒット1 (MV: 0.28)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.16" data-hits="1" data-name="赤刃斬りⅢ ヒット2"> 赤刃斬りⅢ ヒット2 (MV: 0.16)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.49" data-hits="1" data-name="赤刃斬りⅢ ヒット3"> 赤刃斬りⅢ ヒット3 (MV: 0.49)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.55" data-hits="1" data-name="赤刃旋転斬"> 赤刃旋転斬 (MV: 0.55)</label><br>
+
+
+            <div class="attack-group-title">特殊系</div>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.05" data-hits="3" data-name="練気解放無双斬り MV5"> 練気解放無顔斬り MV5 (MV: 0.05 x 3ヒット)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.10" data-hits="3" data-name="練気解放無双斬り MV10"> 練気解放無顔斬り MV10 (MV: 0.10 x 3ヒット)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.16" data-hits="3" data-name="練気解放無双斬り MV16"> 練気解放無顔斬り MV16 (MV: 0.16 x 3ヒット)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.22" data-hits="3" data-name="練気解放無双斬り MV22"> 練気解放無顔斬り MV22 (MV: 0.22 x 3ヒット)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.36" data-hits="3" data-name="練気解放無双斬り MV36"> 練気解放無顔斬り MV36 (MV: 0.36 x 3ヒット)</label><br>
+
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.15" data-hits="7" data-name="気刃兜割 白"> 気刃兜割 白 (MV: 0.15 x 7ヒット)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.20" data-hits="7" data-name="気刃兜割 黄"> 気刃兜割 黄 (MV: 0.20 x 7ヒット)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.23" data-hits="7" data-name="気刃兜割 赤"> 気刃兜割 赤 (MV: 0.23 x 7ヒット)</label><br>
+
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="気刃突き"> 気刃突き (MV: 0.18)</label><br>
+
+            <div class="attack-group-title">ジャンプ攻撃・騎乗</div>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="ジャンプ斬り"> ジャンプ斬り (MV: 0.18)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.20" data-hits="1" data-name="ジャンプ斬り上げ"> ジャンプ斬り上げ (MV: 0.20)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.16" data-hits="1" data-name="ジャンプ気刃斬りⅠ(ゲージ無し)"> ジャンプ気刃斬りⅠ(ゲージ無し) (MV: 0.16)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.30" data-hits="1" data-name="ジャンプ気刃斬りⅠ"> ジャンプ気刃斬りⅠ (MV: 0.30)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.15" data-hits="1" data-name="騎乗攻撃1 ヒット1"> 騎乗攻撃1 ヒット1 (MV: 0.15)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.10" data-hits="1" data-name="騎乗攻撃1 ヒット2"> 騎乗攻撃1 ヒット2 (MV: 0.10)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.20" data-hits="1" data-name="騎乗攻撃2"> 騎乗攻撃2 (MV: 0.20)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.30" data-hits="1" data-name="下乗攻撃 ヒット1"> 下乗攻撃 ヒット1 (MV: 0.30)</label><br>
+            <label><input type="checkbox" class="attack-checkbox" data-mv="0.15" data-hits="1" data-name="下乗攻撃 ヒット2"> 下乗攻撃 ヒット2 (MV: 0.15)</label><br>
+
+
+        </div>
+
+
+        <div class="section-title">シミュレーション設定</div>
+        <div><label for="headHitzonePercent">頭部への攻撃割合 (%):</label><input type="number" id="headHitzonePercent" value="30" min="0" max="100"></div>
+
+        <button class="secondary-button" onclick="openSettingsModal()">設定の保存・読み込み・削除</button>
+
+
+        <button onclick="calculateTotalDamage()">合計ダメージを計算</button>
+
+        <div id="results"></div>
+
+    </div> <div id="settingsModalOverlay" class="modal-overlay">
+        <div id="settingsModalDialog" class="modal-dialog">
+            <button class="close-button" onclick="closeSettingsModal()">&times;</button>
+            <h3>設定の保存・読み込み・削除</h3>
+
+            <div class="control-group">
+                <div>
+                    <label for="settingNameInput">設定名:</label>
+                    <input type="text" id="settingNameInput" placeholder="新しい設定名">
+                </div>
+                <button class="save-button secondary-button" onclick="saveCurrentSettings()">現在の設定を保存</button>
+            </div>
+
+            <div class="control-group">
+                 <div>
+                    <label for="savedSettingsSelect">保存済み設定:</label>
+                    <select id="savedSettingsSelect">
+                        <option value="">--選択してください--</option>
+                    </select>
+                 </div>
+                <button class="load-button secondary-button" onclick="loadSelectedSetting()">読み込み</button>
+                <button class="delete-button secondary-button" onclick="deleteSelectedSetting()">削除</button>
+            </div>
+
+            <div class="control-group">
+                 <button class="clear-button secondary-button" onclick="clearAllSettings()">全ての保存設定をクリア</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // Define a key for localStorage
+        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v5'; // キーを更新して変更を反映
+
+        // Global variable to hold all settings
+        let allSettings = {};
+
+        // --- Skill Data Mapping (Level Effects) ---
+        // Store skill effects by level in structured objects
+        const skillData = {
+            attack: { raw: [0, 3, 5, 7, 8, 8, 8, 8], multi: [1.0, 1.0, 1.0, 1.0, 1.02, 1.04, 1.06, 1.08] }, // Lv0-7
+            criticalEye: { affinity: [0, 4, 8, 12, 16, 20, 25, 30] }, // Lv0-7
+            peakPerformance: { raw: [0, 3, 6, 10, 15, 20] }, // Lv0-5
+            inverse: { raw: [0, 10, 15, 25] }, // Lv0-3
+            agitator: { raw: [0, 4, 8, 12, 16, 20], affinity: [0, 3, 5, 7, 10, 15] }, // Lv0-5
+            maximumMight: { affinity: [0, 10, 20, 30] }, // Lv0-3
+            latentPower: { affinity: [0, 10, 20, 30, 40, 50] }, // Lv0-5
+            chainCrit: { raw: [0, 8, 12, 16], trueElem: [0, 6, 8, 10] }, // Lv0-3 (Stage 2 assumed)
+            offensiveGuard: { raw: [0, 10, 15, 20] }, // Lv0-3
+            absorption: { trueElem: [0, 4, 6, 8] }, // Lv0-3 (Assumed)
+            weaknessExploit: { totalWoundedAff: [0, 8, 15, 25, 35, 50] }, // Lv0-5 (Effective + Wounded combined)
+            critBoost: { totalMulti: [1.25, 1.28, 1.31, 1.34, 1.37, 1.40] }, // Lv0-5 (Base 1.25 + skill adds. Lv0 is 1.25) - Corrected Lv0 value
+            mindsEye: { hardMulti: [1.0, 1.10, 1.15, 1.30] }, // Lv0-3 (Lv0 is 1.0)
+            critElem: { multi: [1.0, 1.05, 1.09, 1.16, 1.20, 1.25] }, // Lv0-5 (Lv0 is 1.0)
+            nushiNoTamashii: { rawMultiplier: 1.05 } // Lv1 fixed multiplier
+        };
+
+
+        // --- Helper Functions for Getting Input Values ---
+        function getWeaponInputs() {
+            console.log("getWeaponInputs started");
+            const inputs = {};
+            try {
+                 const baseRawEl = document.getElementById('baseRaw');
+                 // weaponCustomAugmentRaw and weaponSkillRaw elements are removed
+                 const baseAffinityEl = document.getElementById('baseAffinity');
+                 const baseDisplayElemEl = document.getElementById('baseDisplayElem');
+                 const sharpnessPhysEl = document.getElementById('sharpnessPhys');
+                 const sharpnessElemEl = document.getElementById('sharpnessElem');
+
+
+                 const baseRawVal = baseRawEl ? baseRawEl.value : null;
+                 const baseAffinityVal = baseAffinityEl ? baseAffinityEl.value : null;
+                 const baseDisplayElemVal = baseDisplayElemEl ? baseDisplayElemEl.value : null;
+                 const sharpnessPhysVal = sharpnessPhysEl ? sharpnessPhysEl.value : null;
+                 const sharpnessElemVal = sharpnessElemEl ? sharpnessElemEl.value : null;
+
+                 console.log(`getWeaponInputs: Raw values: baseRaw="${baseRawVal}", baseAffinity="${baseAffinityVal}", baseDisplayElem="${baseDisplayElemVal}", sharpnessPhys="${sharpnessPhysVal}", sharpnessElem="${sharpnessElemVal}"`);
+
+
+                 inputs.baseRaw = parseFloat(baseRawVal) || 0;
+                 // Removed weaponCustomAugmentRaw and weaponSkillRaw from inputs
+                 inputs.baseAffinity = parseFloat(baseAffinityVal) || 0;
+                 inputs.baseDisplayElem = parseFloat(baseDisplayElemVal) || 0;
+                 inputs.sharpnessPhys = parseFloat(sharpnessPhysVal) || 1.0;
+                 inputs.sharpnessElem = parseFloat(sharpnessElemVal) || 1.0;
+
+                 console.log(`getWeaponInputs: Parsed values: baseRaw=${inputs.baseRaw}, baseAffinity=${inputs.baseAffinity}, baseDisplayElem=${inputs.baseDisplayElem}, sharpnessPhys=${inputs.sharpnessPhys}, sharpnessElem=${inputs.sharpnessElem}`);
+
+
+            } catch (e) {
+                console.error("Error in getWeaponInputs:", e);
+                // Return default/zero values in case of error
+                return { baseRaw: 0, baseAffinity: 0, baseDisplayElem: 0, sharpnessPhys: 1.0, sharpnessElem: 1.0 };
+            }
+
+             // Check for NaN in final inputs object
+             if (Object.values(inputs).some(val => typeof val === 'number' && isNaN(val))) {
+                 console.error("getWeaponInputs: Final inputs contain NaN!", inputs);
+             }
+            console.log("Weapon Inputs:", inputs);
+            return inputs;
+        }
+
+        function getHitzoneInputs() {
+            console.log("getHitzoneInputs started");
+            const inputs = {};
+            try {
+                 const hitzoneRawHeadEl = document.getElementById('hitzoneRawHead');
+                 const hitzoneElemHeadEl = document.getElementById('hitzoneElemHead');
+                 const hitzoneRawLegEl = document.getElementById('hitzoneRawLeg');
+                 const hitzoneElemLegEl = document.getElementById('hitzoneElemLeg');
+                 const isLegHardTargetEl = document.getElementById('isLegHardTarget');
+
+                 const hitzoneRawHeadVal = hitzoneRawHeadEl ? hitzoneRawHeadEl.value : null;
+                 const hitzoneElemHeadVal = hitzoneElemHeadEl ? hitzoneElemHeadEl.value : null;
+                 const hitzoneRawLegVal = hitzoneRawLegEl ? hitzoneRawLegEl.value : null;
+                 const hitzoneElemLegVal = hitzoneElemLegEl ? hitzoneElemLegEl.value : null;
+                 const isLegHardTargetChecked = isLegHardTargetEl ? isLegHardTargetEl.checked : false;
+
+                 console.log(`getHitzoneInputs: Raw values: hitzoneRawHead="${hitzoneRawHeadVal}", hitzoneElemHead="${hitzoneElemHeadVal}", hitzoneRawLeg="${hitzoneRawLegVal}", hitzoneElemLeg="${hitzoneElemLegVal}", isLegHardTarget=${isLegHardTargetChecked}`);
+
+                 inputs.hitzoneRawHead = parseFloat(hitzoneRawHeadVal) || 0;
+                 inputs.hitzoneElemHead = parseFloat(hitzoneElemHeadVal) || 0;
+                 inputs.hitzoneRawLeg = parseFloat(hitzoneRawLegVal) || 0;
+                 inputs.hitzoneElemLeg = parseFloat(hitzoneElemLegVal) || 0;
+                 inputs.isLegHardTarget = isLegHardTargetChecked;
+
+                 console.log(`getHitzoneInputs: Parsed values: hitzoneRawHead=${inputs.hitzoneRawHead}, hitzoneElemHead=${inputs.hitzoneElemHead}, hitzoneRawLeg=${inputs.hitzoneRawLeg}, hitzoneElemLeg=${inputs.hitzoneElemLeg}, isLegHardTarget=${inputs.isLegHardTarget}`);
+
+            } catch (e) {
+                console.error("Error in getHitzoneInputs:", e);
+                 return { hitzoneRawHead: 0, hitzoneElemHead: 0, hitzoneRawLeg: 0, hitzoneElemLeg: 0, isLegHardTarget: false };
+            }
+
+             // Check for NaN in final inputs object
+             if (Object.values(inputs).some(val => typeof val === 'number' && isNaN(val))) {
+                 console.error("getHitzoneInputs: Final inputs contain NaN!", inputs);
+             }
+             console.log("Hitzone Inputs:", inputs);
+             return inputs;
+        }
+
+        function getSkillSettings() {
+             console.log("getSkillSettings started");
+             const skillSettings = {};
+             const skillToggles = document.querySelectorAll('.skill-item input[type="checkbox"][data-skill-id]');
+
+             skillToggles.forEach(checkbox => {
+                 const skillId = checkbox.dataset.skillId;
+                 if (skillId) {
+                     const levelSelect = document.getElementById(skillId + 'LevelSelect');
+                     const levelValue = levelSelect ? levelSelect.value : 0; // Get raw select value or default to 0
+                     const parsedLevel = parseInt(levelValue) || 0; // Parse value, default to 0 if NaN
+
+                     console.log(`Skill "${skillId}": Toggle=${checkbox.checked}, Raw Level Select Value="${levelValue}", Parsed Level=${parsedLevel}`);
+
+                     skillSettings[skillId] = {
+                         enabled: checkbox.checked,
+                         level: parsedLevel
+                     };
+                 } else {
+                     console.warn("Found skill-item checkbox without data-skill-id:", checkbox);
+                 }
+             });
+             console.log("Skill Settings:", skillSettings);
+             return skillSettings;
+        }
+
+        function getSelectedAttacks() {
+            console.log("getSelectedAttacks started");
+            const selectedAttacks = {};
+            const attackCheckboxes = document.querySelectorAll('.attack-checkbox');
+            attackCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                     const mvVal = checkbox.dataset.mv;
+                     const hitsVal = checkbox.dataset.hits;
+                     const attackName = checkbox.dataset.name;
+
+                     const mv = parseFloat(mvVal) || 0;
+                     const hits = parseInt(hitsVal) || 1;
+
+                     console.log(`Attack "${attackName}": Checked=true, Raw MV="${mvVal}", Raw Hits="${hitsVal}", Parsed MV=${mv}, Parsed Hits=${hits}`);
+
+                     selectedAttacks[attackName] = { mv: mv, hits: hits };
+
+                      if (isNaN(mv) || isNaN(hits) || hits < 1) {
+                          console.error(`getSelectedAttacks: Invalid MV or Hits for attack "${attackName}"`, {mv, hits});
+                      }
+
+                } else {
+                     console.log(`Attack "${checkbox.dataset.name}": Checked=false`);
+                }
+            });
+            console.log("Selected Attacks:", selectedAttacks);
+            return selectedAttacks;
+        }
+
+
+        // --- Skill Effect Calculation ---
+        function getCalculatedSkillEffects(skillSettings) {
+             console.log("getCalculatedSkillEffects started with skillSettings:", skillSettings);
+             const effects = {
+                 rawFlat: 0,
+                 rawMultiplier: 1.0, // Base multiplier for Attack skill (Lv0)
+                 trueElemFlat: 0,
+                 affinityAdd: 0,
+                 critBoostMultiplier: skillData.critBoost.totalMulti[0], // Base crit multiplier (Lv0)
+                 mindsEyeMultiplierHard: skillData.mindsEye.hardMulti[0], // Base Mind's Eye multiplier (Lv0)
+                 critElemMultiplier: skillData.critElem.multi[0], // Base crit element multiplier (Lv0)
+                 nushiNoTamashiiRawMultiplier: 1.0 // Base Nushi no Tamashii multiplier (Off)
+             };
+
+             const getEffectValue = (level, values, skillName, effectType) => {
+                 if (!Array.isArray(values) || values.length === 0) {
+                     console.error(`getEffectValue: Invalid or empty values array for skill "${skillName}", effect "${effectType}".`, values);
+                     return 0; // Return 0 or a safe default if data is missing/invalid
+                 }
+                 const maxLevel = values.length - 1;
+                 const effectiveLevel = Math.min(Math.max(0, level), maxLevel);
+                 const value = values[effectiveLevel];
+                 if (isNaN(value)) {
+                     console.warn(`getEffectValue: Calculated value is NaN for skill "${skillName}", effect "${effectType}", level ${level} (effective: ${effectiveLevel}). Values:`, values);
+                 }
+                 return value;
+             };
+
+             // Apply effects if skill is enabled (using selected level)
+             if (skillSettings.attack && skillSettings.attack.enabled) {
+                 const level = skillSettings.attack.level;
+                 effects.rawFlat += getEffectValue(level, skillData.attack.raw, 'attack', 'raw');
+                 effects.rawMultiplier *= getEffectValue(level, skillData.attack.multi, 'attack', 'multi');
+             }
+             if (skillSettings.criticalEye && skillSettings.criticalEye.enabled) {
+                 const level = skillSettings.criticalEye.level;
+                 effects.affinityAdd += getEffectValue(level, skillData.criticalEye.affinity, 'criticalEye', 'affinity');
+             }
+             if (skillSettings.peakPerformance && skillSettings.peakPerformance.enabled) {
+                  const level = skillSettings.peakPerformance.level;
+                 effects.rawFlat += getEffectValue(level, skillData.peakPerformance.raw, 'peakPerformance', 'raw');
+             }
+             if (skillSettings.inverse && skillSettings.inverse.enabled) {
+                  const level = skillSettings.inverse.level;
+                 effects.rawFlat += getEffectValue(level, skillData.inverse.raw, 'inverse', 'raw');
+             }
+             if (skillSettings.agitator && skillSettings.agitator.enabled) {
+                 const level = skillSettings.agitator.level;
+                 effects.rawFlat += getEffectValue(level, skillData.agitator.raw, 'agitator', 'raw');
+                 effects.affinityAdd += getEffectValue(level, skillData.agitator.affinity, 'agitator', 'affinity');
+             }
+             if (skillSettings.maximumMight && skillSettings.maximumMight.enabled) {
+                  const level = skillSettings.maximumMight.level;
+                 effects.affinityAdd += getEffectValue(level, skillData.maximumMight.affinity, 'maximumMight', 'affinity');
+             }
+             if (skillSettings.latentPower && skillSettings.latentPower.enabled) {
+                  const level = skillSettings.latentPower.level;
+                  effects.affinityAdd += getEffectValue(level, skillData.latentPower.affinity, 'latentPower', 'affinity');
+             }
+             if (skillSettings.chainCrit && skillSettings.chainCrit.enabled) {
+                 const level = skillSettings.chainCrit.level;
+                 effects.rawFlat += getEffectValue(level, skillData.chainCrit.raw, 'chainCrit', 'raw'); // Stage 2 assumed
+                 effects.trueElemFlat += getEffectValue(level, skillData.chainCrit.trueElem, 'chainCrit', 'trueElem'); // Stage 2 assumed
+             }
+             if (skillSettings.offensiveGuard && skillSettings.offensiveGuard.enabled) {
+                  const level = skillSettings.offensiveGuard.level;
+                 effects.rawFlat += getEffectValue(level, skillData.offensiveGuard.raw, 'offensiveGuard', 'raw');
+             }
+             if (skillSettings.absorption && skillSettings.absorption.enabled) {
+                  const level = skillSettings.absorption.level;
+                 effects.trueElemFlat += getEffectValue(level, skillData.absorption.trueElem, 'absorption', 'trueElem'); // Assumed max effect
+             }
+             if (skillSettings.weaknessExploit && skillSettings.weaknessExploit.enabled) {
+                 const level = skillSettings.weaknessExploit.level;
+                 // WEX (Head - Effective + Wounded combined assumed)
+                 effects.wexAffinityHead = getEffectValue(level, skillData.weaknessExploit.totalWoundedAff, 'weaknessExploit', 'totalWoundedAff');
+                 // WEX (Leg - assumed not WEX spot)
+                 effects.wexAffinityLeg = 0; // Redau Leg is not WEX spot
+             } else {
+                 effects.wexAffinityHead = 0;
+                 effects.wexAffinityLeg = 0;
+             }
+
+             // Multipliers
+             if (skillSettings.critBoost && skillSettings.critBoost.enabled) {
+                  const level = skillSettings.critBoost.level;
+                 effects.critBoostMultiplier = getEffectValue(level, skillData.critBoost.totalMulti, 'critBoost', 'totalMulti');
+             } // else use base multiplier (Lv0) initialized above
+
+             if (skillSettings.mindsEye && skillSettings.mindsEye.enabled) {
+                  const level = skillSettings.mindsEye.level;
+                 effects.mindsEyeMultiplierHard = getEffectValue(level, skillData.mindsEye.hardMulti, 'mindsEye', 'hardMulti');
+             } // else use base multiplier (Lv0) initialized above
+
+             if (skillSettings.critElem && skillSettings.critElem.enabled) {
+                  const level = skillSettings.critElem.level;
+                 effects.critElemMultiplier = getEffectValue(level, skillData.critElem.multi, 'critElem', 'multi');
+             } // else use base multiplier (Lv0) initialized above
+
+
+             // Group Skill Multiplier (Nushi no Tamashii)
+             if (skillSettings.nushiNoTamashii && skillSettings.nushiNoTamashii.enabled) { // Nushi no Tamashii is On/Off based on toggle
+                 effects.nushiNoTamashiiRawMultiplier = skillData.nushiNoTamashii.rawMultiplier;
+             }
+
+             console.log("Calculated Skill Effects:", effects);
+             // Check for NaN or Infinity in final effects object
+             if (Object.values(effects).some(val => typeof val === 'number' && (!isFinite(val)))) {
+                 console.error("getCalculatedSkillEffects: Final effects contain NaN or Infinity!", effects);
+             }
+             return effects;
+        }
+
+        // --- Core Damage Calculations ---
+
+        function calculateTrueRaw(baseRaw, skillEffects) { // Removed weaponRawAdds
+             console.log("calculateTrueRaw started with baseRaw:", baseRaw, "skillEffects:", skillEffects);
+             // Check for NaN in inputs
+             if (isNaN(baseRaw) || !isFinite(baseRaw) ||
+                 // Removed checks for weaponRawAdds
+                 isNaN(skillEffects.nushiNoTamashiiRawMultiplier) || !isFinite(skillEffects.nushiNoTamashiiRawMultiplier) ||
+                 isNaN(skillEffects.rawFlat) || !isFinite(skillEffects.rawFlat) ||
+                 isNaN(skillEffects.rawMultiplier) || !isFinite(skillEffects.rawMultiplier)) {
+                 console.error("calculateTrueRaw: NaN or Infinity detected in inputs.", {baseRaw, skillEffects});
+                 return NaN; // Return NaN if inputs are invalid
+             }
+             // Order: (Base Raw * Set Bonus Multiplier + Other Flat Adds) * Attack Multiplier
+             const trueRaw = (baseRaw * skillEffects.nushiNoTamashiiRawMultiplier + skillEffects.rawFlat) * skillEffects.rawMultiplier; // Removed weaponRawAdds
+             console.log("Calculated True Raw:", trueRaw);
+             // Final check for NaN or Infinity
+             if (isNaN(trueRaw) || !isFinite(trueRaw)) {
+                  console.error("calculateTrueRaw: Final result is NaN or Infinity.", trueRaw);
+             }
+             return trueRaw;
+        }
+
+        function calculateEffectiveAffinity(baseAffinity, skillAffinityAdd, wexAffinity) {
+            console.log("calculateEffectiveAffinity started with baseAffinity:", baseAffinity, "skillAffinityAdd:", skillAffinityAdd, "wexAffinity:", wexAffinity);
+            // Check for NaN in inputs
+            if (isNaN(baseAffinity) || !isFinite(baseAffinity) ||
+                isNaN(skillAffinityAdd) || !isFinite(skillAffinityAdd) ||
+                isNaN(wexAffinity) || !isFinite(wexAffinity)) {
+                 console.error("calculateEffectiveAffinity: NaN or Infinity detected in inputs.", {baseAffinity, skillAffinityAdd, wexAffinity});
+                 return NaN; // Return NaN if inputs are invalid
+            }
+            let totalAff = baseAffinity + skillAffinityAdd + wexAffinity;
+            // Cap affinity at 100% and ensure minimum 0%
+            const effectiveAff = Math.min(Math.max(0, totalAff), 100);
+            console.log("Calculated Effective Affinity:", effectiveAff);
+             // Final check for NaN or Infinity
+             if (isNaN(effectiveAff) || !isFinite(effectiveAff)) {
+                  console.error("calculateEffectiveAffinity: Final result is NaN or Infinity.", effectiveAff);
+             }
+            return effectiveAff;
+        }
+
+        function calculateTrueElemental(baseDisplayElem, skillTrueElemFlat) {
+            console.log("calculateTrueElemental started with baseDisplayElem:", baseDisplayElem, "skillTrueElemFlat:", skillTrueElemFlat);
+             // Check for NaN in inputs
+             if (isNaN(baseDisplayElem) || !isFinite(baseDisplayElem) ||
+                 isNaN(skillTrueElemFlat) || !isFinite(skillTrueElemFlat)) {
+                  console.error("calculateTrueElemental: NaN or Infinity detected in inputs.", {baseDisplayElem, skillTrueElemFlat});
+                  return NaN; // Return NaN if inputs are invalid
+             }
+             // Convert Display Elemental to True Elemental + Skill Adds
+            const trueElem = (baseDisplayElem / 10) + skillTrueElemFlat;
+            console.log("Calculated True Elemental:", trueElem);
+             // Final check for NaN or Infinity
+             if (isNaN(trueElem) || !isFinite(trueElem)) {
+                  console.error("calculateTrueElemental: Final result is NaN or Infinity.", trueElem);
+             }
+            return trueElem;
+        }
+
+
+        function calculateDamagePerHit(
+            trueRaw,
+            trueElemental,
+            motionValue,
+            sharpnessPhys,
+            sharpnessElem,
+            hitzoneRaw,
+            hitzoneElem,
+            effectiveAffinity,
+            critBoostMultiplier,
+            mindsEyeMultiplierHard,
+            critElemMultiplier,
+            isTargetHard
+        ) {
+            console.log(`calculateDamagePerHit started for MV ${motionValue} on HZ ${hitzoneRaw}/${hitzoneElem} (Hard: ${isTargetHard})`);
+            console.log(`  Input values: Raw=${trueRaw}, Elem=${trueElemental}, Aff=${effectiveAffinity}, CB=${critBoostMultiplier}, ME=${mindsEyeMultiplierHard}, CE=${critElemMultiplier}`);
+            console.log(`  Hitzone values: Raw=${hitzoneRaw}, Elem=${hitzoneElem}, SharpPhys=${sharpnessPhys}, SharpElem=${sharpnessElem}`);
+
+
+             // Check for NaN or Infinity in inputs
+             if (isNaN(trueRaw) || !isFinite(trueRaw) ||
+                 isNaN(trueElemental) || !isFinite(trueElemental) ||
+                 isNaN(motionValue) || !isFinite(motionValue) ||
+                 isNaN(sharpnessPhys) || !isFinite(sharpnessPhys) ||
+                 isNaN(sharpnessElem) || !isFinite(sharpnessElem) ||
+                 isNaN(hitzoneRaw) || !isFinite(hitzoneRaw) ||
+                 isNaN(hitzoneElem) || !isFinite(hitzoneElem) ||
+                 isNaN(effectiveAffinity) || !isFinite(effectiveAffinity) ||
+                 isNaN(critBoostMultiplier) || !isFinite(critBoostMultiplier) ||
+                 isNaN(mindsEyeMultiplierHard) || !isFinite(mindsEyeMultiplierHard) ||
+                 isNaN(critElemMultiplier) || !isFinite(critElemMultiplier)
+                ) {
+                  console.error("calculateDamagePerHit: NaN or Infinity detected in inputs.", {trueRaw, trueElemental, motionValue, sharpnessPhys, sharpnessElem, hitzoneRaw, hitzoneElem, effectiveAffinity, critBoostMultiplier, mindsEyeMultiplierHard, critElemMultiplier});
+                  return NaN; // Return NaN if inputs are invalid
+             }
+
+
+            // Physical Damage
+            let basePhysDmg = trueRaw * motionValue * sharpnessPhys * (hitzoneRaw / 100);
+            console.log("  Base Phys Dmg:", basePhysDmg);
+
+            // Apply Mind's Eye Hard Target Multiplier if applicable (Target is hard AND Mind's Eye is ON)
+             if (isTargetHard && mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0]) { // Check multiplier > Lv0 multiplier
+                 console.log("  Applying Mind's Eye multiplier:", mindsEyeMultiplierHard);
+                 basePhysDmg *= mindsEyeMultiplierHard;
+             }
+
+            // Physical Crit Expectation
+            const affinityDecimal = Math.max(0, Math.min(100, effectiveAffinity)) / 100;
+            const critExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critBoostMultiplier;
+            const totalPhysDmgPerHit = basePhysDmg * critExpectation;
+            console.log("  Physical Crit Expectation:", critExpectation);
+            console.log("  Total Phys Dmg Per Hit:", totalPhysDmgPerHit);
+
+             // Check for NaN or Infinity in physical damage
+             if (isNaN(totalPhysDmgPerHit) || !isFinite(totalPhysDmgPerHit)) {
+                 console.error("calculateDamagePerHit: Calculated physical damage is NaN or Infinity.", totalPhysDmgPerHit);
+                 return NaN; // Return NaN if calculation results in invalid number
+             }
+
+
+            // Elemental Damage
+            // Elemental Motion Value is assumed 1.0
+            const baseElemDmg = trueElemental * sharpnessElem * (hitzoneElem / 100);
+            console.log("  Base Elem Dmg:", baseElemDmg);
+
+            // Elemental Crit Expectation
+            const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier;
+            const totalElemDmgPerHit = baseElemDmg * critElemExpectation;
+            console.log("  Elemental Crit Expectation:", critElemExpectation);
+            console.log("  Total Elem Dmg Per Hit:", totalElemDmgPerHit);
+
+             // Check for NaN or Infinity in elemental damage
+             if (isNaN(totalElemDmgPerHit) || !isFinite(totalElemDmgPerHit)) {
+                 console.error("calculateDamagePerHit: Calculated elemental damage is NaN or Infinity.", totalElemDmgPerHit);
+                 return NaN; // Return NaN if calculation results in invalid number
+             }
+
+
+            // Total Damage per hit
+            const totalDmg = totalPhysDmgPerHit + totalElemDmgPerHit;
+            console.log("  Total Dmg Per Hit:", totalDmg);
+
+             // Final check for NaN or Infinity
+              if (isNaN(totalDmg) || !isFinite(totalDmg)) {
+                  console.error("calculateDamagePerHit: Final total damage is NaN or Infinity.", totalDmg);
+                  return NaN; // Return NaN if calculation results in invalid number
+              }
+
+            return totalDmg;
+        }
+
+
+        // --- Main Calculation Function ---
+        function calculateTotalDamage() {
+            console.log("calculateTotalDamage function started");
+
+            // 1. Get all input values
+            const weaponInputs = getWeaponInputs();
+            const hitzoneInputs = getHitzoneInputs();
+            const skillSettings = getSkillSettings(); // Get skill settings (toggle and level)
+            const selectedAttacks = getSelectedAttacks();
+
+            const resultsDiv = document.getElementById('results'); // Get results div early
+             console.log("Results div element:", resultsDiv); // Log results div element
+            if (!resultsDiv) {
+                 console.error("Results div element not found!");
+                 return; // Cannot proceed without results div
+            }
+
+
+            // Check if any attacks are selected
+            const selectedAttackNames = Object.keys(selectedAttacks);
+            if (selectedAttackNames.length === 0) {
+                 resultsDiv.innerHTML = '<h3>計算結果</h3><p>計算対象の攻撃が選択されていません。</p>';
+                 console.log("No attacks selected, calculation stopped.");
+                 return; // Stop execution if no attacks are selected
+            }
+
+             // Check for potential NaN or Infinity in primary inputs
+             if (Object.values(weaponInputs).some(val => typeof val === 'number' && (!isFinite(val)))) {
+                  console.error("calculateTotalDamage: Primary weapon inputs contain NaN or Infinity. Calculation aborted.", weaponInputs);
+                  resultsDiv.innerHTML = '<h3>計算エラー</h3><p>武器の入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
+                   return;
+              }
+             if (Object.values(hitzoneInputs).some(val => typeof val === 'number' && (!isFinite(val)))) {
+                 console.error("calculateTotalDamage: Primary hitzone inputs contain NaN or Infinity. Calculation aborted.", hitzoneInputs);
+                 resultsDiv.innerHTML = '<h3>計算エラー</h3><p>肉質の入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
+                  return;
+             }
+
+
+            // 2. Calculate total skill effects based on settings
+            const skillEffects = getCalculatedSkillEffects(skillSettings);
+            // Check for NaN or Infinity in skill effects
+             if (Object.values(skillEffects).some(val => typeof val === 'number' && (!isFinite(val)))) {
+                  console.error("calculateTotalDamage: Calculated skill effects contain NaN or Infinity. Calculation aborted.", skillEffects);
+                   resultsDiv.innerHTML = '<h3>計算エラー</h3><p>スキル効果の計算に問題が発生しました。</p>';
+                   return;
+             }
+
+
+            // 3. Calculate True Raw and True Elemental
+            const trueRaw = calculateTrueRaw(weaponInputs.baseRaw, skillEffects); // Removed weaponRawAdds
+            const trueElemental = calculateTrueElemental(weaponInputs.baseDisplayElem, skillEffects.trueElemFlat);
+
+            // Check for NaN or Infinity in true raw/elemental
+             if (!isFinite(trueRaw) || !isFinite(trueElemental)) {
+                  console.error("calculateTotalDamage: True Raw or True Elemental is NaN or Infinity. Calculation aborted.", {trueRaw, trueElemental});
+                   resultsDiv.innerHTML = '<h3>計算エラー</h3><p>攻撃力・属性値の計算に問題が発生しました。</p>';
+                   return;
+             }
+
+
+            // 4. Calculate Effective Affinity for Head and Leg
+            const effectiveAffinityHead = calculateEffectiveAffinity(weaponInputs.baseAffinity, skillEffects.affinityAdd, skillEffects.wexAffinityHead);
+            const effectiveAffinityLeg = calculateEffectiveAffinity(weaponInputs.baseAffinity, skillEffects.affinityAdd, skillEffects.wexAffinityLeg);
+
+            // Check for NaN or Infinity in affinities
+             if (!isFinite(effectiveAffinityHead) || !isFinite(effectiveAffinityLeg)) {
+                  console.error("calculateTotalDamage: Effective Affinity is NaN or Infinity. Calculation aborted.", {effectiveAffinityHead, effectiveAffinityLeg});
+                   resultsDiv.innerHTML = '<h3>計算エラー</h3><p>会心率の計算に問題が発生しました。</p>';
+                   return;
+             }
+
+
+            // 5. Calculate Total Damage for Selected Attacks
+            let totalSequenceDamageHeadOnly = 0;
+            let totalSequenceDamageLegOnly = 0;
+            let calculationErrorOccurred = false; // Flag to indicate if any hit calculation failed
+
+            for (const attackName in selectedAttacks) {
+                if (selectedAttacks.hasOwnProperty(attackName)) {
+                     const attack = selectedAttacks[attackName];
+                     console.log(`Processing Attack: ${attackName} (MV: ${attack.mv}, Hits: ${attack.hits})`);
+
+                     // Damage per hit for this attack on Head
+                    const totalDmgHeadPerHit = calculateDamagePerHit(
+                        trueRaw,
+                        trueElemental,
+                        attack.mv,
+                        weaponInputs.sharpnessPhys,
+                        weaponInputs.sharpnessElem,
+                        hitzoneInputs.hitzoneRawHead,
+                        hitzoneInputs.hitzoneElemHead,
+                        effectiveAffinityHead,
+                        skillEffects.critBoostMultiplier,
+                        skillEffects.mindsEyeMultiplierHard, // Mind's Eye for Head (assuming not hard)
+                        skillEffects.critElemMultiplier,
+                        false // Head is not hard target in this setup
+                    );
+
+                     // Check for NaN in per-hit damage
+                     if (!isFinite(totalDmgHeadPerHit)) {
+                          console.error(`calculateTotalDamage: Damage per hit for ${attackName} on Head is not finite (${totalDmgHeadPerHit}). Skipping this attack for head calculation.`);
+                          calculationErrorOccurred = true;
+                          // Do not add to total, continue with next attack
+                     } else {
+                         // Total damage for this attack on Head
+                         const totalDmgHeadForAttack = totalDmgHeadPerHit * attack.hits;
+                         console.log(`  Total Damage for ${attackName} (Head): ${totalDmgHeadForAttack}`); // Log raw number before toFixed
+                         if (!isFinite(totalDmgHeadForAttack)) {
+                              console.error(`calculateTotalDamage: Total damage for ${attackName} on Head is not finite (${totalDmgHeadForAttack}).`);
+                               calculationErrorOccurred = true;
+                         } else {
+                              totalSequenceDamageHeadOnly += totalDmgHeadForAttack;
+                         }
+                     }
+
+
+                     // Damage per hit for this attack on Leg
+                     const totalDmgLegPerHit = calculateDamagePerHit(
+                        trueRaw,
+                        trueElemental,
+                        attack.mv,
+                        weaponInputs.sharpnessPhys,
+                        weaponInputs.sharpnessElem,
+                        hitzoneInputs.hitzoneRawLeg,
+                        hitzoneInputs.hitzoneElemLeg,
+                        effectiveAffinityLeg,
+                        skillEffects.critBoostMultiplier,
+                        skillEffects.mindsEyeMultiplierHard, // Mind's Eye for Leg
+                        skillEffects.critElemMultiplier,
+                        hitzoneInputs.isLegHardTarget // Check if Leg is marked as hard target
+                     );
+
+                     // Check for NaN in per-hit damage
+                     if (!isFinite(totalDmgLegPerHit)) {
+                         console.error(`calculateTotalDamage: Damage per hit for ${attackName} on Leg is not finite (${totalDmgLegPerHit}). Skipping this attack for leg calculation.`);
+                          calculationErrorOccurred = true;
+                         // Do not add to total, continue with next attack
+                     } else {
+                         // Total damage for this attack on Leg
+                         const totalDmgLegForAttack = totalDmgLegPerHit * attack.hits;
+                         console.log(`  Total Damage for ${attackName} (Leg): ${totalDmgLegForAttack}`); // Log raw number before toFixed
+                          if (!isFinite(totalDmgLegForAttack)) {
+                              console.error(`calculateTotalDamage: Total damage for ${attackName} on Leg is not finite (${totalDmgLegForAttack}).`);
+                               calculationErrorOccurred = true;
+                         } else {
+                              totalSequenceDamageLegOnly += totalDmgLegForAttack;
+                         }
+                     }
+                }
+            }
+
+            console.log("Final Total Sequence Damage (Head Only):", totalSequenceDamageHeadOnly);
+            console.log("Final Total Sequence Damage (Leg Only):", totalSequenceDamageLegOnly);
+
+             // Check final totals for NaN/Infinity before displaying
+             if (!isFinite(totalSequenceDamageHeadOnly) || !isFinite(totalSequenceDamageLegOnly) || calculationErrorOccurred) {
+                 console.error("calculateTotalDamage: Final total damage is not finite or an error occurred during hit calculation.", {totalSequenceDamageHeadOnly, totalSequenceDamageLegOnly});
+                  resultsDiv.innerHTML = '<h3>計算エラー</h3><p>合計ダメージの計算中に問題が発生しました。入力値を確認してください。</p>';
+                  return;
+             }
+
+
+            // 6. Display Results
+             resultsDiv.innerHTML = `
+                <h3>計算結果</h3>
+                <p>選択した攻撃連携の合計ダメージ:</p>
+                <ul>
+                    <li>頭部のみ (100% 頭部): ${totalSequenceDamageHeadOnly.toFixed(2)}</li>
+                    <li>足部のみ (100% 足部): ${totalSequenceDamageLegOnly.toFixed(2)}</li>
+                </ul>
+
+                <p>--- 詳細 ---</p>
+                <p>真の攻撃力: ${trueRaw.toFixed(2)}</p>
+                <p>真の属性値 (氷): ${trueElemental.toFixed(2)}</p>
+                <p>頭部へのEffective会心率: ${effectiveAffinityHead.toFixed(2)}%</p>
+                <p>足部へのEffective会心率: ${effectiveAffinityLeg.toFixed(2)}%</p>
+                 <p>物理会心倍率 (超会心込み): ${skillEffects.critBoostMultiplier.toFixed(2)}x</p>
+                 <p>属性会心倍率 (会心撃【属性】込み): ${skillEffects.critElemMultiplier.toFixed(2)}x</p>
+                 <p>心眼 硬い部位物理倍率: ${skillEffects.mindsEyeMultiplierHard.toFixed(2)}x</p>
+
+
+            `;
+             console.log("Results div updated successfully.");
+
+            console.log("calculateTotalDamage function finished.");
+        }
+
+        // --- Save/Load/Clear Functions ---
+
+        function saveCurrentSettings() {
+            console.log("saveCurrentSettings started");
+            const settingNameInput = document.getElementById('settingNameInput');
+            if (!settingNameInput) { console.error("settingNameInput element not found in saveCurrentSettings."); alert("エラーが発生しました。ページを再読み込みしてください。"); return; }
+            const settingName = settingNameInput.value.trim();
+
+            if (!settingName) {
+                alert('設定名を入力してください。');
+                 console.log("Save failed: Setting name is empty.");
+                return;
+            }
+
+            const settingsToSave = {
+                weapon: getWeaponInputs(), // getWeaponInputs will no longer include removed fields
+                hitzone: getHitzoneInputs(),
+                skills: getSkillSettings(), // Save skill settings (toggle and level)
+                attacks: {}
+            };
+
+            // Save the state of each attack checkbox by its data-name
+            const attackCheckboxes = document.querySelectorAll('.attack-checkbox');
+            attackCheckboxes.forEach(checkbox => {
+                settingsToSave.attacks[checkbox.dataset.name] = checkbox.checked;
+            });
+            console.log("Settings to save:", settingsToSave);
+
+
+            // Add/Update the setting in the global settings object
+            allSettings[settingName] = settingsToSave;
+
+            // Save all settings to localStorage
+            saveAllSettingsToLocalStorage();
+
+            alert(`設定 "${settingName}" を保存しました！`);
+            settingNameInput.value = ''; // Clear the input field in modal
+            updateSettingListUI(); // Update the dropdown list in modal
+            closeSettingsModal(); // Close the modal after saving
+            console.log("Settings saved and modal closed.");
+        }
+
+        function loadAllSettingsFromLocalStorage() {
+             console.log("loadAllSettingsFromLocalStorage started");
+            try {
+                const savedSettings = localStorage.getItem(localStorageKey);
+
+                if (savedSettings) {
+                    allSettings = JSON.parse(savedSettings);
+                     // Ensure allSettings is an object in case of corrupted data
+                     if (typeof allSettings !== 'object' || allSettings === null) {
+                         console.warn("Loaded settings are not an object, resetting to empty.");
+                         allSettings = {};
+                     }
+                     console.log("Loaded settings from localStorage:", allSettings);
+                } else {
+                    allSettings = {}; // No settings saved yet
+                    console.log("No settings found in localStorage.");
+                }
+            } catch (e) {
+                alert('保存された設定の読み込みに失敗しました。データが破損している可能性があります。');
+                console.error('Error loading settings:', e);
+                allSettings = {}; // Reset settings in case of error
+            }
+             updateSettingListUI(); // Always update the dropdown on load
+        }
+
+        function saveAllSettingsToLocalStorage() {
+            console.log("saveAllSettingsToLocalStorage started");
+            try {
+                localStorage.setItem(localStorageKey, JSON.stringify(allSettings));
+                console.log("All settings saved to localStorage.");
+            } catch (e) {
+                alert('全設定の保存に失敗しました。ブラウザのストレージ容量を確認してください。');
+                console.error('Error saving settings:', e);
+            }
+        }
+
+        function updateSettingListUI() {
+            console.log("updateSettingListUI started");
+            const selectElement = document.getElementById('savedSettingsSelect');
+            if (!selectElement) {
+                 console.error("savedSettingsSelect element not found in updateSettingListUI.");
+                 return;
+            }
+            selectElement.innerHTML = '<option value="">--選択してください--</option>'; // Clear existing options
+
+            // Sort setting names alphabetically
+            const sortedSettingNames = Object.keys(allSettings).sort();
+
+            sortedSettingNames.forEach(settingName => {
+                const option = document.createElement('option');
+                option.value = settingName;
+                option.textContent = settingName;
+                selectElement.appendChild(option);
+            });
+             console.log("Setting list UI updated.");
+        }
+
+        function loadSelectedSetting() {
+            console.log("loadSelectedSetting started");
+            const selectElement = document.getElementById('savedSettingsSelect');
+            if (!selectElement) { console.error("savedSettingsSelect element not found in loadSelectedSetting."); alert("エラーが発生しました。ページを再読み込みしてください。"); return; }
+            const settingName = selectElement.value;
+
+            if (!settingName) {
+                alert('読み込む設定を選択してください。');
+                 console.log("Load failed: No setting selected.");
+                return;
+            }
+
+            const settingsToLoad = allSettings[settingName];
+
+            if (settingsToLoad) {
+                console.log(`Loading settings for "${settingName}":`, settingsToLoad);
+                // Load Weapon settings
+                if (settingsToLoad.weapon) {
+                    // Check if elements exist before setting value (handles older saved data)
+                    const baseRawEl = document.getElementById('baseRaw');
+                    if (baseRawEl && settingsToLoad.weapon.baseRaw !== undefined) baseRawEl.value = settingsToLoad.weapon.baseRaw;
+
+                    // Removed loading for weaponCustomAugmentRaw and weaponSkillRaw
+
+                    const baseAffinityEl = document.getElementById('baseAffinity');
+                    if (baseAffinityEl && settingsToLoad.weapon.baseAffinity !== undefined) baseAffinityEl.value = settingsToLoad.weapon.baseAffinity;
+
+                    const baseDisplayElemEl = document.getElementById('baseDisplayElem');
+                    if (baseDisplayElemEl && settingsToLoad.weapon.baseDisplayElem !== undefined) baseDisplayElemEl.value = settingsToLoad.weapon.baseDisplayElem;
+
+                    const sharpnessPhysEl = document.getElementById('sharpnessPhys');
+                    if (sharpnessPhysEl && settingsToLoad.weapon.sharpnessPhys !== undefined) sharpnessPhysEl.value = settingsToLoad.weapon.sharpnessPhys;
+
+                     const sharpnessElemEl = document.getElementById('sharpnessElem');
+                    if (sharpnessElemEl && settingsToLoad.weapon.sharpnessElem !== undefined) sharpnessElemEl.value = settingsToLoad.weapon.sharpnessElem;
+
+
+                    console.log("Weapon settings loaded.");
+                } else { console.warn("No weapon data found in saved settings for load."); }
+
+                // Load Hitzone settings
+                if (settingsToLoad.hitzone) {
+                     const hitzoneRawHeadEl = document.getElementById('hitzoneRawHead');
+                     if (hitzoneRawHeadEl && settingsToLoad.hitzone.hitzoneRawHead !== undefined) hitzoneRawHeadEl.value = settingsToLoad.hitzone.hitzoneRawHead;
+
+                    const hitzoneElemHeadEl = document.getElementById('hitzoneElemHead');
+                    if (hitzoneElemHeadEl && settingsToLoad.hitzone.hitzoneElemHead !== undefined) hitzoneElemHeadEl.value = settingsToLoad.hitzone.hitzoneElemHead;
+
+                    const hitzoneRawLegEl = document.getElementById('hitzoneRawLeg');
+                    if (hitzoneRawLegEl && settingsToLoad.hitzone.hitzoneRawLeg !== undefined) hitzoneRawLegEl.value = settingsToLoad.hitzone.hitzoneRawLeg;
+
+                    const hitzoneElemLegEl = document.getElementById('hitzoneElemLeg');
+                    if (hitzoneElemLegEl && settingsToLoad.hitzone.hitzoneElemLeg !== undefined) hitzoneElemLegEl.value = settingsToLoad.hitzone.hitzoneElemLeg;
+
+                    const isLegHardTargetEl = document.getElementById('isLegHardTarget');
+                    if (isLegHardTargetEl && settingsToLoad.hitzone.isLegHardTarget !== undefined) isLegHardTargetEl.checked = settingsToLoad.hitzone.isLegHardTarget;
+
+                    console.log("Hitzone settings loaded.");
+                } else { console.warn("No hitzone data found in saved settings for load."); }
+
+
+                // Load Skill settings
+                if (settingsToLoad.skills) {
+                    // Load checked state and selected level for each skill
+                    // Iterate based on known skill IDs to handle missing data in saved settings
+                     const skillIds = Object.keys(skillData); // Use skillData keys to iterate
+                    skillIds.forEach(skillId => {
+                         const skillDataToLoad = settingsToLoad.skills ? settingsToLoad.skills[skillId] : undefined; // Check if skills object exists
+                            const toggleElement = document.getElementById(skillId + 'Toggle');
+                            const levelSelectElement = document.getElementById(skillId + 'LevelSelect'); // May not exist for Nushi
+
+                         if (toggleElement) { // Process if toggle element exists
+                             if (skillDataToLoad !== undefined) {
+                                 // Load toggle state
+                                toggleElement.checked = skillDataToLoad.enabled;
+                                 // Trigger the change event to update the select's disabled state
+                                 toggleElement.dispatchEvent(new Event('change'));
+                             } else {
+                                 // Default to unchecked if not found in saved data
+                                  toggleElement.checked = false;
+                                   toggleElement.dispatchEvent(new Event('change')); // Update disabled state
+                             }
+                         } else {
+                             console.warn(`Toggle element not found for skillId: ${skillId} during load.`);
+                         }
+
+                         if (levelSelectElement) { // Process if select element exists
+                              if (skillDataToLoad && skillDataToLoad.level !== undefined) {
+                                 // Load level select value
+                                 levelSelectElement.value = skillDataToLoad.level;
+                                 if (levelSelectElement.value != skillDataToLoad.level) {
+                                      console.warn(`Failed to set level select value for ${skillId} during load. Saved: ${skillDataToLoad.level}, Set: ${levelSelectElement.value}`);
+                                 }
+                              } else {
+                                  // Default to Lv0 if not found in saved data (initial select value is set in HTML)
+                                  // Ensure a valid value if needed:
+                                   if (levelSelectElement.options.length > 0) {
+                                        const defaultValue = levelSelectElement.options[0].value; // Default to first option (Lv0) if not loaded
+                                       levelSelectElement.value = defaultValue;
+                                        console.warn(`Skill level data not found for ${skillId} during load. Defaulting level select to: ${defaultValue}`);
+                                   } else {
+                                        console.warn(`Level select element for ${skillId} has no options during load.`);
+                                   }
+                              }
+                         } else {
+                             console.log(`Level select element not found for skillId: ${skillId} during load.`);
+                         }
+                    });
+                     console.log("Skill settings loaded.");
+                } else { console.warn("No skill data found in saved settings for load."); }
+
+
+                // Load Attack checkbox states
+                if (settingsToLoad.attacks) {
+                     const attackCheckboxes = document.querySelectorAll('.attack-checkbox');
+                     attackCheckboxes.forEach(checkbox => {
+                         const attackName = checkbox.dataset.name;
+                         // Check if the attack name exists in saved settings before setting state
+                         if (settingsToLoad.attacks.hasOwnProperty(attackName)) {
+                             checkbox.checked = settingsToLoad.attacks[attackName];
+                         } else {
+                             // Default to unchecked if not found in saved data (e.g., new attacks added)
+                             checkbox.checked = false;
+                             console.warn(`Attack checkbox state not found for "${attackName}" during load. Defaulting to unchecked.`);
+                         }
+                     });
+                     console.log("Attack checkbox states loaded.");
+                } else { console.warn("No attack data found in saved settings for load."); }
+
+
+                alert(`設定 "${settingName}" を読み込みました！`);
+                calculateTotalDamage(); // Recalculate damage after loading
+                closeSettingsModal(); // Close the modal after loading
+                 console.log("Settings loaded and modal closed.");
+            } else {
+                alert('選択された設定が見つかりません。');
+                 console.warn(`Attempted to load unknown setting: "${settingName}"`);
+            }
+        }
+
+        function deleteSelectedSetting() {
+            console.log("deleteSelectedSetting started");
+            const selectElement = document.getElementById('savedSettingsSelect');
+            if (!selectElement) {
+                 console.error("savedSettingsSelect element not found in deleteSelectedSetting.");
+                 alert('エラーが発生しました。ページを再読み込みしてください。');
+                 return;
+            }
+            const settingName = selectElement.value;
+
+            if (!settingName) {
+                alert('削除する設定を選択してください。');
+                 console.log("Delete failed: No setting selected.");
+                return;
+            }
+
+            if (confirm(`設定 "${settingName}" を削除しますか？`)) {
+                if (allSettings.hasOwnProperty(settingName)) {
+                    delete allSettings[settingName]; // Remove from the global object
+                    saveAllSettingsToLocalStorage(); // Save the updated object to localStorage
+                    alert(`設定 "${settingName}" を削除しました。`);
+                    updateSettingListUI(); // Update the dropdown list
+                    console.log(`Setting "${settingName}" deleted.`);
+                    // Optionally, reset fields to default or load a blank state after deleting
+                    // For simplicity, just update the list.
+                } else {
+                    alert('選択された設定が見つかりません。');
+                    console.warn(`Attempted to delete unknown setting: "${settingName}"`);
+                }
+            } else {
+                 console.log("Delete cancelled by user.");
+            }
+        }
+
+        function clearAllSettings() {
+            console.log("clearAllSettings started");
+             if (confirm('全ての保存された設定をクリアしますか？この操作は元に戻せません。')) {
+                try {
+                    localStorage.removeItem(localStorageKey); // Remove the entire key
+                    allSettings = {}; // Clear the global object
+                    alert('全ての保存設定をクリアしました。');
+                    updateSettingListUI(); // Clear the dropdown list
+                    console.log("All settings cleared from localStorage.");
+                    // Optionally, reset fields to default values
+                } catch (e) {
+                     alert('設定のクリアに失敗しました。');
+                     console.error('Error clearing settings:', e);
+                }
+             } else {
+                 console.log("Clear All cancelled by user.");
+            }
+        }
+
+         // --- Skill Toggle and Level Select Linkage ---
+         function setupSkillControls() {
+             console.log("setupSkillControls started");
+             const skillItems = document.querySelectorAll('.skill-item');
+             if (skillItems.length === 0) {
+                 console.warn("No elements with class 'skill-item' found.");
+             }
+             skillItems.forEach(item => {
+                 const checkbox = item.querySelector('input[type="checkbox"][data-skill-id]');
+                 const select = item.querySelector('select[data-skill-id]');
+
+                 if (checkbox && select) {
+                     // Function to update select state based on checkbox
+                     const updateSelectState = () => {
+                         select.disabled = !checkbox.checked;
+                         console.log(`Skill "${checkbox.dataset.skillId}": Checkbox changed to ${checkbox.checked}, Select disabled: ${select.disabled}`);
+                         // Don't reset select value to 0 when disabled, keep the last selected level
+                     };
+
+                     // Set initial state
+                     updateSelectState();
+
+                     // Add event listener to update state on change
+                     checkbox.addEventListener('change', updateSelectState);
+
+                      // Ensure select value is numeric (though select always returns string)
+                      // This is handled implicitly by parseInt in getSkillSettings
+                 } else if (checkbox && !select) {
+                      console.log(`Skill "${checkbox.dataset.skillId}": Checkbox found, but no corresponding select with matching data-skill-id. (Expected for Nushi?)`);
+                 } else if (!checkbox && select) {
+                     console.warn(`Found a select element for skill "${select.dataset.skillId}" but no corresponding checkbox with matching data-skill-id.`);
+                 } else {
+                     console.warn("Found a skill-item element without expected checkbox or select.");
+                 }
+             });
+             console.log("setupSkillControls finished.");
+         }
+
+        // --- Modal Control ---
+        const settingsModalOverlay = document.getElementById('settingsModalOverlay');
+        const settingsModalDialog = document.getElementById('settingsModalDialog');
+
+        function openSettingsModal() {
+             console.log("openSettingsModal started");
+            if (!settingsModalOverlay || !settingsModalDialog) {
+                 console.error("Modal elements (overlay or dialog) not found.");
+                 alert("設定モーダルを開けませんでした。ページを再読み込みしてください。");
+                 return;
+            }
+             updateSettingListUI(); // Ensure the list is up-to-date when opening
+             settingsModalOverlay.classList.add('visible');
+             console.log("Settings modal opened.");
+        }
+
+        function closeSettingsModal() {
+             console.log("closeSettingsModal started");
+             if (settingsModalOverlay) {
+                 settingsModalOverlay.classList.remove('visible');
+                 console.log("Settings modal closed.");
+             } else {
+                  console.warn("Modal overlay element not found when trying to close.");
+             }
+        }
+
+         // Close modal when clicking outside the dialog
+         if (settingsModalOverlay) { // Check if overlay element exists
+             settingsModalOverlay.addEventListener('click', function(event) {
+                 // No need to check event.target here due to stopPropagation on dialog
+                 closeSettingsModal();
+             });
+         } else {
+             console.error("Modal overlay element not found for event listener.");
+         }
+
+
+        // Prevent closing modal when clicking inside the dialog
+         if (settingsModalDialog) { // Check if dialog element exists
+             settingsModalDialog.addEventListener('click', function(event) {
+                 event.stopPropagation();
+             });
+         } else {
+              console.error("Modal dialog element not found for event listener.");
+         }
+
+
+        // --- Initialize on page load ---
+        window.onload = function() {
+             console.log("Window loaded. Initializing...");
+             // Add a small delay before setup and load to ensure DOM is fully ready
+             setTimeout(() => {
+                 console.log("Delayed initialization started.");
+                 setupSkillControls(); // Setup the linkage between checkboxes and selects
+                 loadAllSettingsFromLocalStorage(); // Load all settings into memory and update UI
+                 console.log("Delayed initialization finished.");
+             }, 200); // Increased delay to 200ms
+             // calculateTotalDamage(); // Initial calculation with default values (or loaded defaults if any) is not automatically done, user clicks calculate
+
+        };
+
+    </script>
+
+</body>
+</html>
