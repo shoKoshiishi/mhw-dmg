@@ -16,6 +16,12 @@
              box-sizing: border-box; /* paddingとborderを幅に含める */
         }
          input[type="number"] { width: 80px; margin-right: 10px; } /* 数値入力の幅を調整 */
+         /* セレクトボックスの幅調整 */
+        select {
+            width: 100px; /* 適切な幅に調整 */
+             margin-right: 10px;
+             vertical-align: top; /* ラベルとの位置調整 */
+        }
 
         input[type="checkbox"] { margin-bottom: 5px; transform: scale(1.2); margin-right: 5px; vertical-align: middle; }
 
@@ -46,6 +52,8 @@
         #results { margin-top: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; }
         #results h3 { margin-top: 0; color: #333; border-bottom: 1px solid #eee; padding-bottom: 5px; }
         #results p { margin-bottom: 5px; }
+         #results ul { list-style: none; padding: 0; } /* リストのスタイルを調整 */
+         #results li { margin-bottom: 5px; }
 
         .attack-list { margin-bottom: 15px; }
         .attack-list label { width: auto; margin-right: 15px; margin-bottom: 8px; font-weight: normal; } /* モーション名のラベル幅を自動に */
@@ -152,6 +160,12 @@
                  margin-bottom: 10px;
             }
              input[type="number"] { width: 100%; } /* 個別指定も100%に */
+             /* セレクトボックスも100%に */
+             select {
+                 width: 100%;
+                 margin-right: 0;
+             }
+
 
             button {
                  width: 100%; /* ボタンも100%幅に */
@@ -192,27 +206,33 @@
         <h2>MH Wilds 太刀 合計ダメージ計算ツール (詳細版)</h2>
         <p>選択した攻撃モーションの連携による合計ダメージを計算します。</p>
         <p>入力項目とスキルレベルを調整し、連携に含めたい攻撃にチェックを入れて「合計ダメージを計算」ボタンを押してください。</p>
-        <p>※モーション値・スキル効果・斬れ味補正値はコミュニティの検証情報に基づき、製品版と異なる場合があります。</p> <div class="section-title">武器基本性能</div>
+        <p>※モーション値・スキル効果・斬れ味補正値・**モンスター肉質**はコミュニティの検証情報に基づき、製品版と異なる場合があります。</p> <div class="section-title">武器基本性能</div>
         <div><label for="baseRaw">武器基礎攻撃力:</label><input type="number" id="baseRaw" value="220"></div>
         <div><label for="baseAffinity">武器基礎会心率 (%):</label><input type="number" id="baseAffinity" value="5"></div>
-        <div><label for="baseDisplayElem">武器表示属性値:</label><input type="number" id="baseDisplayElem" value="350"></div>
-         <div>
+        <div>
+             <label for="baseDisplayElem">武器表示属性値:</label>
+             <input type="number" id="baseDisplayElem" value="350">
+             <select id="weaponElement">
+                 <option value="fire">火</option>
+                 <option value="water">水</option>
+                 <option value="thunder">雷</option>
+                 <option value="ice" selected>氷</option>
+                 <option value="dragon">龍</option>
+             </select>
+         </div>
+        <div>
              <label for="sharpnessColor">斬れ味:</label>
              <select id="sharpnessColor">
                  <option value="yellow">黄</option>
                  <option value="green">緑</option>
                  <option value="blue">青</option>
                  <option value="white" selected>白</option>
-                 </select>
+             </select>
          </div>
-        <div class="section-title">モンスター肉質 (歴戦王レダウ 想定)</div>
-        <div><label for="hitzoneRawHead">頭部 物理肉質:</label><input type="number" id="hitzoneRawHead" value="60"></div>
-        <div><label for="hitzoneElemHead">頭部 属性肉質:</label><input type="number" id="hitzoneElemHead" value="20"></div>
-        <div><label for="hitzoneRawLeg">足部 物理肉質:</label><input type="number" id="hitzoneRawLeg" value="37"></div>
-        <div><label for="hitzoneElemLeg">足部 属性肉質:</label><input type="number" id="hitzoneElemLeg" value="10"></div>
-        <div><label for="isLegHardTarget">足部を硬い部位として扱う (心眼適用判定):</label><input type="checkbox" id="isLegHardTarget" checked></div>
 
-        <div class="section-title">スキル設定</div>
+
+        <div class="section-title">モンスター肉質 (歴戦王レダウ 固定)</div> <p>※肉質情報は画像データに基づきツールに組み込まれています。</p>
+         <div class="section-title">スキル設定</div>
         <p>※チェックで有効/無効を切り替え、ドロップダウンでレベルを選択してください。</p>
 
         <div class="skill-category-title">武器スキル</div>
@@ -337,7 +357,10 @@
             <label><input type="checkbox" class="attack-checkbox" data-mv="0.18" data-hits="1" data-name="斬り上げ"> 斬り上げ (MV: 0.18)</label><br>
             <label><input type="checkbox" class="attack-checkbox" data-mv="0.22" data-hits="1" data-name="斬り下がり"> 斬り下がり (MV: 0.22)</label><br>
             <label><input type="checkbox" class="attack-checkbox" data-mv="0.22" data-hits="1" data-name="左右移動斬り"> 左右移動斬り (MV: 0.22)</label><br>
-             <label><input type="checkbox" class="attack-checkbox" data-mv="0.26" data-hits="1" data-name="気刃斬りI"> 気刃斬りI (MV: 0.26)</label><br> <label><input type="checkbox" class="attack-checkbox" data-mv="0.30" data-hits="1" data-name="赤刃斬りI"> 赤刃斬りI (MV: 0.30)</label><br> <div class="attack-group-title">気刃斬り連携</div>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.26" data-hits="1" data-name="気刃斬りI"> 気刃斬りI (MV: 0.26)</label><br>
+             <label><input type="checkbox" class="attack-checkbox" data-mv="0.30" data-hits="1" data-name="赤刃斬りI"> 赤刃斬りI (MV: 0.30)</label><br>
+
+             <div class="attack-group-title">気刃斬り連携</div>
             <label><input type="checkbox" class="attack-checkbox" data-mv="0.28" data-hits="1" data-name="気刃踏み込み斬り"> 気刃踏み込み斬り (MV: 0.28)</label><br>
             <label><input type="checkbox" class="attack-checkbox" data-mv="0.14" data-hits="1" data-name="気刃斬りⅠ(ゲージ無し)"> 気刃斬りⅠ(ゲージ無し) (MV: 0.14)</label><br>
             <label><input type="checkbox" class="attack-checkbox" data-mv="0.31" data-hits="1" data-name="気刃斬りⅠ"> 気刃斬りⅠ (MV: 0.31)</label><br>
@@ -434,7 +457,7 @@
     </div>
     <script>
         // Define a key for localStorage
-        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v8'; // キーを更新して変更を反映
+        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v10'; // キーを更新して変更を反映
 
         // Global variable to hold all settings
         let allSettings = {};
@@ -459,14 +482,37 @@
         };
 
         // --- Sharpness Multipliers Data ---
-        // Based on community findings for Yellow, Green, Blue, White
         const sharpnessData = {
             yellow: { phys: 1.00, elem: 0.75 },
             green: { phys: 1.05, elem: 1.00 },
             blue: { phys: 1.20, elem: 1.0625 }, // Community value, might change
             white: { phys: 1.32, elem: 1.15 },
-            // Red, Orange, Purple excluded for now
         };
+
+        // --- Weapon Element Data ---
+        const weaponElementNames = {
+            fire: '火',
+            water: '水',
+            thunder: '雷',
+            ice: '氷',
+            dragon: '龍'
+        };
+
+         // --- Monster Hitzone Data (Rathalos - based on provided image) ---
+         // Mind's Eye activation threshold: raw <= 44
+         const hitzoneData = {
+             head_wound1: { name: '頭（傷口）1', raw: 60, elem: { fire: 5, water: 15, thunder: 0, ice: 20, dragon: 5 } },
+             head_wound2: { name: '頭（傷口）2', raw: 70, elem: { fire: 5, water: 20, thunder: 0, ice: 25, dragon: 5 } },
+             head_weak:   { name: '頭[弱点]',   raw: 80, elem: { fire: 5, water: 20, thunder: 0, ice: 25, dragon: 5 } },
+             body:        { name: '胴体',      raw: 30, elem: { fire: 5, water: 5,  thunder: 0, ice: 5,  dragon: 5 } },
+             wing:        { name: '翼',        raw: 45, elem: { fire: 5, water: 10, thunder: 0, ice: 15, dragon: 5 } },
+             leg:         { name: '脚',        raw: 37, elem: { fire: 5, water: 5,  thunder: 0, ice: 5,  dragon: 5 } },
+             tail:        { name: '尻尾',      raw: 45, elem: { fire: 5, water: 5,  thunder: 0, ice: 10, dragon: 5 } },
+             tail_wound:  { name: '尻尾（その他傷口）', raw: 65, elem: { fire: 5, water: 10, thunder: 0, ice: 15, dragon: 5 } },
+             // Note: The image seems to be for Rathalos, not Redau. Using Rathalos data.
+             // Note: Physical hitzones are for '斬' (cutting) damage.
+         };
+         const MINDS_EYE_THRESHOLD = 44; // Physical hitzone <= 44
 
 
         // Get results div element once on load
@@ -505,29 +551,24 @@
 
         // --- Helper Functions for Getting Input Values ---
         function getWeaponInputs() {
-            const selectedSharpnessColor = safeGetSelectValue('sharpnessColor', 'white'); // Get selected sharpness color
+            const selectedSharpnessColor = safeGetSelectValue('sharpnessColor', 'white');
+            const selectedWeaponElement = safeGetSelectValue('weaponElement', 'ice');
 
             const inputs = {
                 baseRaw: safeParseFloat('baseRaw', 0),
                 baseAffinity: safeParseFloat('baseAffinity', 0),
                 baseDisplayElem: safeParseFloat('baseDisplayElem', 0),
-                sharpnessColor: selectedSharpnessColor, // Store selected color
-                sharpnessPhys: sharpnessData[selectedSharpnessColor]?.phys ?? 1.0, // Get phys multiplier from data
-                sharpnessElem: sharpnessData[selectedSharpnessColor]?.elem ?? 1.0, // Get elem multiplier from data
+                weaponElement: selectedWeaponElement,
+                sharpnessColor: selectedSharpnessColor,
+                sharpnessPhys: sharpnessData[selectedSharpnessColor]?.phys ?? 1.0,
+                sharpnessElem: sharpnessData[selectedSharpnessColor]?.elem ?? 1.0,
             };
             return inputs;
         }
 
-        function getHitzoneInputs() {
-             const inputs = {
-                hitzoneRawHead: safeParseFloat('hitzoneRawHead', 0),
-                hitzoneElemHead: safeParseFloat('hitzoneElemHead', 0),
-                hitzoneRawLeg: safeParseFloat('hitzoneRawLeg', 0),
-                hitzoneElemLeg: safeParseFloat('hitzoneElemLeg', 0),
-                isLegHardTarget: safeGetChecked('isLegHardTarget', false),
-             };
-             return inputs;
-        }
+         // No longer getting hitzone inputs from UI, using fixed data
+         // function getHitzoneInputs() { ... }
+
 
         function getSkillSettings() {
              const skillSettings = {};
@@ -577,8 +618,8 @@
                  mindsEyeMultiplierHard: skillData.mindsEye.hardMulti[0],
                  critElemMultiplier: skillData.critElem.multi[0],
                  nushiNoTamashiiRawMultiplier: 1.0,
-                 wexAffinityHead: 0,
-                 wexAffinityLeg: 0, // Redau Leg is not WEX spot
+                 wexAffinityHead: 0, // WEX will be calculated based on hitzone raw in main calculation
+                 wexAffinityLeg: 0,
              };
 
              const getEffectValue = (level, values, skillName, effectType) => {
@@ -589,7 +630,7 @@
                  const effectiveLevel = Math.min(Math.max(0, level), values.length - 1);
                  const value = values[effectiveLevel];
                   if (isNaN(value) || !isFinite(value)) {
-                       console.error(`getEffectValue: Invalid value (${value}) for skill "${skillName}", effect "${effectType}", level ${level}.`);
+                       console.error(`getEffectValue: Invalid value (${value}) for skill "${skillName}", effect "${effectType}", level ${effectiveLevel}.`);
                        return 0;
                   }
                  return value;
@@ -612,12 +653,13 @@
                      if (data.totalMulti) effects.critBoostMultiplier = getEffectValue(level, data.totalMulti, skillId, 'totalMulti');
                      if (data.hardMulti) effects.mindsEyeMultiplierHard = getEffectValue(level, data.hardMulti, skillId, 'hardMulti');
                      if (data.critElem) effects.critElemMultiplier = getEffectValue(level, data.critElem, skillId, 'critElem');
-                     if (data.totalWoundedAff) {
-                          if (skillId === 'weaknessExploit') {
-                             effects.wexAffinityHead = getEffectValue(level, data.totalWoundedAff, skillId, 'totalWoundedAff');
-                             effects.wexAffinityLeg = 0;
-                          }
-                     }
+                      // WEX calculation is now integrated per-hitzone in calculateTotalDamage
+                      if (skillId === 'weaknessExploit') {
+                           effects.weaknessExploitLevel = level; // Store WEX level to use per hitzone
+                      } else {
+                           effects.weaknessExploitLevel = 0; // Default if WEX is not enabled
+                      }
+
                       if (data.rawMultiplier && skillId === 'nushiNoTamashii') {
                           effects.nushiNoTamashiiRawMultiplier = data.rawMultiplier;
                       }
@@ -633,11 +675,8 @@
              return trueRaw;
         }
 
-        function calculateEffectiveAffinity(baseAffinity, skillAffinityAdd, wexAffinity) {
-            let totalAff = baseAffinity + skillAffinityAdd + wexAffinity;
-            const effectiveAff = Math.min(Math.max(0, totalAff), 100);
-            return effectiveAff;
-        }
+        // Effective affinity will be calculated per hitzone based on WEX applicability
+        // function calculateEffectiveAffinity(baseAffinity, skillAffinityAdd, wexAffinity) { ... }
 
         function calculateTrueElemental(baseDisplayElem, skillTrueElemFlat) {
             const trueElem = (baseDisplayElem / 10) + skillTrueElemFlat;
@@ -648,15 +687,19 @@
         function calculateDamagePerHit(
             trueRaw, trueElemental, motionValue, sharpnessPhys, sharpnessElem,
             hitzoneRaw, hitzoneElem, effectiveAffinity, critBoostMultiplier,
-            mindsEyeMultiplierHard, critElemMultiplier, isTargetHard
+            mindsEyeMultiplierHard, critElemMultiplier
+            // Removed isTargetHard as it's now determined by hitzoneRaw and Mind's Eye skill
         ) {
-             // Check for NaN or Infinity in inputs - Done in main calculation
-
             // Physical Damage
             let basePhysDmg = trueRaw * motionValue * sharpnessPhys * (hitzoneRaw / 100);
-             if (isTargetHard && mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0]) {
+
+             // Apply Mind's Eye if skill is ON AND hitzone raw is <= threshold
+             if (skillData.mindsEye && skillData.mindsEye.hardMulti && mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0] && hitzoneRaw <= MINDS_EYE_THRESHOLD) {
+                  console.log(`Applying Mind's Eye multiplier (${mindsEyeMultiplierHard}) for hitzone raw ${hitzoneRaw}`); // Log Mind's Eye activation
                  basePhysDmg *= mindsEyeMultiplierHard;
              }
+
+
             const affinityDecimal = Math.max(0, Math.min(100, effectiveAffinity)) / 100;
             const critExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critBoostMultiplier;
             const totalPhysDmgPerHit = basePhysDmg * critExpectation;
@@ -686,8 +729,8 @@
                  return;
             }
 
-            const weaponInputs = getWeaponInputs(); // Includes selected sharpness phys/elem
-            const hitzoneInputs = getHitzoneInputs();
+            const weaponInputs = getWeaponInputs();
+            // No longer getting hitzone inputs from UI
             const skillSettings = getSkillSettings();
             const selectedAttacks = getSelectedAttacks();
 
@@ -698,11 +741,11 @@
                  return;
             }
 
-             // Consolidated check for NaN/Infinity in primary inputs
-             const primaryInputs = { ...weaponInputs, ...hitzoneInputs };
-             if (Object.values(primaryInputs).some(val => typeof val === 'number' && !isFinite(val))) {
-                  console.error("Primary inputs contain non-finite values.", primaryInputs);
-                  resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
+             // Check for NaN/Infinity in primary weapon inputs
+             const primaryWeaponInputs = { ...weaponInputs }; // Only weapon inputs have UI elements
+             if (Object.values(primaryWeaponInputs).some(val => typeof val === 'number' && !isFinite(val))) {
+                  console.error("Primary weapon inputs contain non-finite values.", primaryWeaponInputs);
+                  resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>武器の入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
                    return;
               }
 
@@ -725,90 +768,102 @@
              }
 
 
-            const effectiveAffinityHead = calculateEffectiveAffinity(weaponInputs.baseAffinity, skillEffects.affinityAdd, skillEffects.wexAffinityHead);
-            const effectiveAffinityLeg = calculateEffectiveAffinity(weaponInputs.baseAffinity, skillEffects.affinityAdd, skillEffects.wexAffinityLeg);
+            const resultsHtml = ['<h3>計算結果</h3>', '<p>選択した攻撃連携の合計ダメージ:</p>', '<ul>'];
+            let overallCalculationErrorOccurred = false; // Flag for any error across all hitzones
 
-             if (!isFinite(effectiveAffinityHead) || !isFinite(effectiveAffinityLeg)) {
-                  console.error("Effective Affinity is not finite.", {effectiveAffinityHead, effectiveAffinityLeg});
-                   resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>会心率の計算に問題が発生しました。</p>';
-                   return;
-             }
+            // Iterate through all defined hitzones
+            for (const hitzoneKey in hitzoneData) {
+                if (hitzoneData.hasOwnProperty(hitzoneKey)) {
+                    const hitzone = hitzoneData[hitzoneKey];
+                    const hitzoneRaw = hitzone.raw;
+                    // Get elemental hitzone based on selected weapon element
+                    const hitzoneElem = hitzone.elem[weaponInputs.weaponElement] ?? 0; // Default to 0 if element not found
 
-
-            let totalSequenceDamageHeadOnly = 0;
-            let totalSequenceDamageLegOnly = 0;
-            let calculationErrorOccurred = false;
-
-            for (const attackName in selectedAttacks) {
-                if (selectedAttacks.hasOwnProperty(attackName)) {
-                     const attack = selectedAttacks[attackName];
-
-                    const totalDmgHeadPerHit = calculateDamagePerHit(
-                        trueRaw, trueElemental, attack.mv, weaponInputs.sharpnessPhys, weaponInputs.sharpnessElem, // Use sharpness from weaponInputs
-                        hitzoneInputs.hitzoneRawHead, hitzoneInputs.hitzoneElemHead, effectiveAffinityHead,
-                        skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier,
-                        false
-                    );
-
-                     if (!isFinite(totalDmgHeadPerHit)) {
-                          console.error(`Damage per hit for ${attackName} on Head is not finite.`);
-                          calculationErrorOccurred = true;
-                     } else {
-                         const totalDmgHeadForAttack = totalDmgHeadPerHit * attack.hits;
-                          if (!isFinite(totalDmgHeadForAttack)) {
-                              console.error(`Total damage for ${attackName} on Head is not finite.`);
-                               calculationErrorOccurred = true;
-                         } else {
-                              totalSequenceDamageHeadOnly += totalDmgHeadForAttack;
-                         }
+                     // Calculate Effective Affinity for this hitzone (applying WEX if raw >= 45)
+                    let wexAffinity = 0;
+                     // Check if WEX is enabled AND hitzone raw is 45 or above (WEX condition for weak spots >=45)
+                     if (skillSettings.weaknessExploit && skillSettings.weaknessExploit.enabled && hitzoneRaw >= 45) {
+                          wexAffinity = skillData.weaknessExploit.totalWoundedAff[skillEffects.weaknessExploitLevel] ?? 0;
+                          console.log(`WEX Lv${skillEffects.weaknessExploitLevel} applied for hitzone ${hitzone.name} (Raw ${hitzoneRaw} >= 45), adding ${wexAffinity}% affinity.`); // Log WEX application
                      }
 
-                     const totalDmgLegPerHit = calculateDamagePerHit(
-                        trueRaw, trueElemental, attack.mv, weaponInputs.sharpnessPhys, weaponInputs.sharpessElem, // Use sharpness from weaponInputs
-                        hitzoneInputs.hitzoneRawLeg, hitzoneInputs.hitzoneElemLeg, effectiveAffinityLeg,
-                        skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier,
-                        hitzoneInputs.isLegHardTarget
-                     );
 
-                     if (!isFinite(totalDmgLegPerHit)) {
-                         console.error(`Damage per hit for ${attackName} on Leg is not finite.`);
-                          calculationErrorOccurred = true;
+                    const effectiveAffinity = calculateEffectiveAffinity(weaponInputs.baseAffinity, skillEffects.affinityAdd, wexAffinity);
+
+                     if (!isFinite(effectiveAffinity)) {
+                          console.error(`Effective Affinity is not finite for hitzone ${hitzone.name}.`, effectiveAffinity);
+                           overallCalculationErrorOccurred = true; // Mark overall error
+                           continue; // Skip calculation for this hitzone
+                     }
+
+
+                    let totalSequenceDamageForHitzone = 0;
+                    let hitzoneCalculationError = false; // Flag for error within this hitzone's calculation
+
+                    for (const attackName in selectedAttacks) {
+                        if (selectedAttacks.hasOwnProperty(attackName)) {
+                             const attack = selectedAttacks[attackName];
+
+                            const totalDmgPerHit = calculateDamagePerHit(
+                                trueRaw, trueElemental, attack.mv, weaponInputs.sharpnessPhys, weaponInputs.sharpnessElem,
+                                hitzoneRaw, hitzoneElem, effectiveAffinity,
+                                skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier
+                                // isTargetHard is now determined inside calculateDamagePerHit
+                            );
+
+                             if (!isFinite(totalDmgPerHit)) {
+                                  console.error(`Damage per hit for ${attackName} on ${hitzone.name} is not finite.`);
+                                  hitzoneCalculationError = true;
+                                  break; // Stop processing attacks for this hitzone if one attack fails
+                             } else {
+                                 const totalDmgForAttack = totalDmgPerHit * attack.hits;
+                                  if (!isFinite(totalDmgForAttack)) {
+                                      console.error(`Total damage for ${attackName} on ${hitzone.name} is not finite.`);
+                                       hitzoneCalculationError = true;
+                                       break; // Stop processing attacks
+                                 } else {
+                                      totalSequenceDamageForHitzone += totalDmgForAttack;
+                                 }
+                             }
+                        }
+                    }
+
+                    // Add result for this hitzone if no errors occurred for it
+                     if (!hitzoneCalculationError) {
+                         resultsHtml.push(`<li>${hitzone.name} (物理肉質 ${hitzoneRaw}, 属性肉質 ${hitzoneElem}, 有効会心率 ${effectiveAffinity.toFixed(2)}%): ${totalSequenceDamageForHitzone.toFixed(2)}</li>`);
                      } else {
-                         const totalDmgLegForAttack = totalDmgLegPerHit * attack.hits;
-                          if (!isFinite(totalDmgLegForAttack)) {
-                              console.error(`Total damage for ${attackName} on Leg is not finite.`);
-                               calculationErrorOccurred = true;
-                         } else {
-                              totalSequenceDamageLegOnly += totalDmgLegForAttack;
-                         }
+                          resultsHtml.push(`<li>${hitzone.name} (物理肉質 ${hitzoneRaw}, 属性肉質 ${hitzoneElem}): 計算エラー</li>`);
+                          overallCalculationErrorOccurred = true; // Ensure overall error flag is set
                      }
                 }
             }
 
-             if (!isFinite(totalSequenceDamageHeadOnly) || !isFinite(totalSequenceDamageLegOnly) || calculationErrorOccurred) {
-                 console.error("Final total damage is not finite or an error occurred during hit calculation.", {totalSequenceDamageHeadOnly, totalSequenceDamageLegOnly});
-                  resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>合計ダメージの計算中に問題が発生しました。入力値を確認してください。</p>';
-                  return;
-             }
+            resultsHtml.push('</ul>'); // Close the list
 
-            resultsDivElement.innerHTML = `
-                <h3>計算結果</h3>
-                <p>選択した攻撃連携の合計ダメージ:</p>
-                <ul>
-                    <li>頭部のみ (100% 頭部): ${totalSequenceDamageHeadOnly.toFixed(2)}</li>
-                    <li>足部のみ (100% 足部): ${totalSequenceDamageLegOnly.toFixed(2)}</li>
-                </ul>
+             // Add detailed info below the list
+            resultsHtml.push('<p>--- 詳細 ---</p>');
+            resultsHtml.push(`<p>真の攻撃力: ${trueRaw.toFixed(2)}</p>`);
+            resultsHtml.push(`<p>真の属性値 (${weaponElementNames[weaponInputs.weaponElement] || weaponInputs.weaponElement}): ${trueElemental.toFixed(2)}</p>`);
+            // Affinity per hitzone is now shown in the list items
+            // resultsHtml.push(`<p>頭部へのEffective会心率: ${effectiveAffinityHead.toFixed(2)}%</p>`);
+            // resultsHtml.push(`<p>足部へのEffective会心率: ${effectiveAffinityLeg.toFixed(2)}%</p>`);
+            resultsHtml.push(`<p>物理会心倍率 (超会心込み): ${skillEffects.critBoostMultiplier.toFixed(2)}x</p>`);
+            resultsHtml.push(`<p>属性会心倍率 (会心撃【属性】込み): ${skillEffects.critElemMultiplier.toFixed(2)}x</p>`);
+            resultsHtml.push(`<p>心眼 硬い部位物理倍率: ${skillEffects.mindsEyeMultiplierHard.toFixed(2)}x (物理肉質 ${MINDS_EYE_THRESHOLD}以下で適用)</p>`); // Add threshold info
+            resultsHtml.push(`<p>物理斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessPhys.toFixed(2)}x</p>`);
+            resultsHtml.push(`<p>属性斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessElem.toFixed(2)}x</p>`);
 
-                <p>--- 詳細 ---</p>
-                <p>真の攻撃力: ${trueRaw.toFixed(2)}</p>
-                <p>真の属性値 (氷): ${trueElemental.toFixed(2)}</p>
-                <p>頭部へのEffective会心率: ${effectiveAffinityHead.toFixed(2)}%</p>
-                <p>足部へのEffective会心率: ${effectiveAffinityLeg.toFixed(2)}%</p>
-                 <p>物理会心倍率 (超会心込み): ${skillEffects.critBoostMultiplier.toFixed(2)}x</p>
-                 <p>属性会心倍率 (会心撃【属性】込み): ${skillEffects.critElemMultiplier.toFixed(2)}x</p>
-                 <p>心眼 硬い部位物理倍率: ${skillEffects.mindsEyeMultiplierHard.toFixed(2)}x</p>
-                 <p>物理斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessPhys.toFixed(2)}x</p> <p>属性斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessElem.toFixed(2)}x</p> `;
-             console.log("Calculation finished, results displayed.");
+
+            if (overallCalculationErrorOccurred) {
+                 resultsHtml.unshift('<h3>計算エラー</h3><p>一部の部位のダメージ計算中に問題が発生しました。</p>');
+                 console.error("Overall calculation finished with errors.");
+            } else {
+                 console.log("Calculation finished successfully.");
+            }
+
+
+            resultsDivElement.innerHTML = resultsHtml.join(''); // Join the array into a single string and set innerHTML
+
         }
 
          // Helper to get sharpness color name for display
@@ -818,7 +873,6 @@
                  case 'green': return '緑';
                  case 'blue': return '青';
                  case 'white': return '白';
-                 // Add other colors if added later
                  default: return '不明';
              }
          };
@@ -837,8 +891,8 @@
             }
 
             const settingsToSave = {
-                weapon: getWeaponInputs(), // Now includes sharpnessColor
-                hitzone: getHitzoneInputs(),
+                weapon: getWeaponInputs(),
+                // hitzone data is fixed, no need to save
                 skills: getSkillSettings(),
                 attacks: {}
             };
@@ -910,28 +964,33 @@
             const settingsToLoad = allSettings[settingName];
 
             if (settingsToLoad) {
-                 // Use optional chaining and nullish coalescing for robust loading
+                 // Load weapon inputs
                 document.getElementById('baseRaw').value = settingsToLoad.weapon?.baseRaw ?? document.getElementById('baseRaw')?.value ?? 0;
                 document.getElementById('baseAffinity').value = settingsToLoad.weapon?.baseAffinity ?? document.getElementById('baseAffinity')?.value ?? 0;
                 document.getElementById('baseDisplayElem').value = settingsToLoad.weapon?.baseDisplayElem ?? document.getElementById('baseDisplayElem')?.value ?? 0;
+
+                 // Load weapon element
+                 const weaponElementEl = document.getElementById('weaponElement');
+                 if (weaponElementEl) {
+                     const savedElement = settingsToLoad.weapon?.weaponElement;
+                     weaponElementEl.value = savedElement ?? weaponElementEl.value;
+                      if (!weaponElementNames.hasOwnProperty(weaponElementEl.value)) {
+                           weaponElementEl.value = 'ice'; // Default if loaded value is invalid
+                      }
+                 }
+
                 // Load sharpness color
                  const sharpnessColorEl = document.getElementById('sharpnessColor');
                  if (sharpnessColorEl) {
                      sharpnessColorEl.value = settingsToLoad.weapon?.sharpnessColor ?? sharpnessColorEl.value;
-                     // Validate if loaded value is a valid option, otherwise default
                      if (!sharpnessData.hasOwnProperty(sharpnessColorEl.value)) {
                          sharpnessColorEl.value = 'white'; // Default if loaded value is invalid
                      }
                  }
-                // sharpnessPhys and sharpnessElem are calculated from sharpnessColor in getWeaponInputs()
 
-                document.getElementById('hitzoneRawHead').value = settingsToLoad.hitzone?.hitzoneRawHead ?? document.getElementById('hitzoneRawHead')?.value ?? 0;
-                document.getElementById('hitzoneElemHead').value = settingsToLoad.hitzone?.hitzoneElemHead ?? document.getElementById('hitzoneElemHead')?.value ?? 0;
-                document.getElementById('hitzoneRawLeg').value = settingsToLoad.hitzone?.hitzoneRawLeg ?? document.getElementById('hitzoneRawLeg')?.value ?? 0;
-                document.getElementById('hitzoneElemLeg').value = settingsToLoad.hitzone?.hitzoneElemLeg ?? document.getElementById('hitzoneElemLeg')?.value ?? 0;
-                 document.getElementById('isLegHardTarget').checked = settingsToLoad.hitzone?.isLegHardTarget ?? document.getElementById('isLegHardTarget')?.checked ?? false;
+                // Hitzone data is fixed, no need to load
 
-
+                // Load skill settings
                 const skillIds = Object.keys(skillData);
                 skillIds.forEach(skillId => {
                      const toggleElement = document.getElementById(skillId + 'Toggle');
@@ -948,6 +1007,7 @@
                      }
                 });
 
+                // Load attack checkbox states
                 const attackCheckboxes = document.querySelectorAll('.attack-checkbox');
                 attackCheckboxes.forEach(checkbox => {
                     const attackName = checkbox.dataset.name;
