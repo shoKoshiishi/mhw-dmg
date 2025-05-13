@@ -490,7 +490,7 @@
     </div>
     <script>
         // Define a key for localStorage
-        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v14'; // キーを更新
+        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v15'; // キーを更新
 
         // Global variable to hold all settings
         let allSettings = {};
@@ -661,9 +661,9 @@
                  rawMultiplier: 1.0,
                  trueElemFlat: 0,
                  affinityAdd: 0,
-                 critBoostMultiplier: skillData.critBoost.totalMulti[0],
-                 mindsEyeMultiplierHard: skillData.mindsEye.hardMulti[0],
-                 critElemMultiplier: skillData.critElem.multi[0],
+                 critBoostMultiplier: skillData.critBoost.totalMulti[0], // Default to Lv0 (1.25)
+                 mindsEyeMultiplierHard: skillData.mindsEye.hardMulti[0], // Default to Lv0 (1.0)
+                 critElemMultiplier: skillData.critElem.multi[0], // Default to Lv0 (1.0)
                  nushiNoTamashiiRawMultiplier: 1.0,
                  weaknessExploitLevel: 0,
              };
@@ -692,15 +692,29 @@
                          continue;
                      }
 
-                     if (data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
-                     if (data.multi) effects.rawMultiplier *= getEffectValue(level, data.multi, skillId, 'multi');
-                     if (data.trueElem) effects.trueElemFlat += getEffectValue(level, data.trueElem, skillId, 'trueElem');
-                     if (data.affinity) effects.affinityAdd += getEffectValue(level, data.affinity, skillId, 'affinity');
-                     if (data.totalMulti) effects.critBoostMultiplier = getEffectValue(level, data.totalMulti, skillId, 'totalMulti');
-                     if (data.hardMulti) effects.mindsEyeMultiplierHard = getEffectValue(level, data.hardMulti, skillId, 'hardMulti');
-                     if (data.critElem) effects.critElemMultiplier = getEffectValue(level, data.critElem, skillId, 'critElem');
+                     // Apply skill effects based on skillId and data
+                     if (skillId === 'attack' && data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
+                     if (skillId === 'attack' && data.multi) effects.rawMultiplier *= getEffectValue(level, data.multi, skillId, 'multi');
+                     if (skillId === 'criticalEye' && data.affinity) effects.affinityAdd += getEffectValue(level, data.affinity, skillId, 'affinity');
+                     if (skillId === 'peakPerformance' && data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
+                     if (skillId === 'inverse' && data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
+                     if (skillId === 'agitator' && data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
+                     if (skillId === 'agitator' && data.affinity) effects.affinityAdd += getEffectValue(level, data.affinity, skillId, 'affinity');
+                     if (skillId === 'maximumMight' && data.affinity) effects.affinityAdd += getEffectValue(level, data.affinity, skillId, 'affinity');
+                     if (skillId === 'latentPower' && data.affinity) effects.affinityAdd += getEffectValue(level, data.affinity, skillId, 'affinity');
+                     if (skillId === 'chainCrit' && data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
+                     if (skillId === 'chainCrit' && data.trueElem) effects.trueElemFlat += getEffectValue(level, data.trueElem, skillId, 'trueElem');
+                     if (skillId === 'offensiveGuard' && data.raw) effects.rawFlat += getEffectValue(level, data.raw, skillId, 'raw');
+                     if (skillId === 'absorption' && data.trueElem) effects.trueElemFlat += getEffectValue(level, data.trueElem, skillId, 'trueElem');
+
+                      // These multipliers overwrite the defaults if the skill is enabled and has the data
+                     if (skillId === 'critBoost' && data.totalMulti) effects.critBoostMultiplier = getEffectValue(level, data.totalMulti, skillId, 'totalMulti');
+                     if (skillId === 'mindsEye' && data.hardMulti) effects.mindsEyeMultiplierHard = getEffectValue(level, data.hardMulti, skillId, 'hardMulti');
+                     if (skillId === 'critElem' && data.multi) effects.critElemMultiplier = getEffectValue(level, data.multi, skillId, 'multi');
+
+
                       if (skillId === 'weaknessExploit') {
-                           effects.weaknessExploitLevel = level;
+                           effects.weaknessExploitLevel = level; // Store WEX level
                       }
 
                       if (data.rawMultiplier && skillId === 'nushiNoTamashii') {
@@ -708,6 +722,9 @@
                       }
                  }
              }
+
+             console.log("Calculated Skill Effects:", effects); // Debug log
+
              return effects;
         }
 
@@ -715,17 +732,20 @@
 
         function calculateTrueRaw(baseRaw, skillEffects) {
              const trueRaw = (baseRaw * skillEffects.nushiNoTamashiiRawMultiplier + skillEffects.rawFlat) * skillEffects.rawMultiplier;
+             console.log(`True Raw: (${baseRaw} * ${skillEffects.nushiNoTamashiiRawMultiplier} + ${skillEffects.rawFlat}) * ${skillEffects.rawMultiplier} = ${trueRaw.toFixed(2)}`); // Debug log
              return trueRaw;
         }
 
         function calculateEffectiveAffinity(baseAffinity, skillAffinityAdd, wexAffinity) {
             let totalAff = baseAffinity + skillAffinityAdd + wexAffinity;
             const effectiveAff = Math.min(Math.max(0, totalAff), 100);
+             console.log(`Effective Affinity: ${baseAffinity} (Base) + ${skillAffinityAdd} (Skill Add) + ${wexAffinity} (WEX) = ${totalAff} => clamped to ${effectiveAff.toFixed(2)}%`); // Debug log
             return effectiveAff;
         }
 
         function calculateTrueElemental(baseDisplayElem, skillTrueElemFlat) {
             const trueElem = (baseDisplayElem / 10) + skillTrueElemFlat;
+             console.log(`True Elemental: (${baseDisplayElem} / 10) + ${skillTrueElemFlat} = ${trueElem.toFixed(2)}`); // Debug log
             return trueElem;
         }
 
@@ -735,25 +755,40 @@
             hitzoneRaw, hitzoneElem, effectiveAffinity, critBoostMultiplier,
             mindsEyeMultiplierHard, critElemMultiplier
         ) {
+            console.log(`Calculating damage per hit with -> MV: ${motionValue}, SharpPhys: ${sharpnessPhys.toFixed(2)}, SharpElem: ${sharpnessElem.toFixed(2)}, HZRaw: ${hitzoneRaw}, HZElem: ${hitzoneElem}, EffectiveAff: ${effectiveAffinity.toFixed(2)}%, CritBoost: ${critBoostMultiplier.toFixed(2)}x, MindsEye: ${mindsEyeMultiplierHard.toFixed(2)}x, CritElem: ${critElemMultiplier.toFixed(2)}x`); // Debug log
+
             // Physical Damage
             let basePhysDmg = trueRaw * motionValue * sharpnessPhys * (hitzoneRaw / 100);
+            console.log(`Base Physical Damage before Mind's Eye: ${trueRaw.toFixed(2)} * ${motionValue} * ${sharpnessPhys.toFixed(2)} * (${hitzoneRaw} / 100) = ${basePhysDmg.toFixed(2)}`); // Debug log
+
 
              // Apply Mind's Eye if skill is ON AND hitzone raw is <= threshold
-             if (skillData.mindsEye && skillData.mindsEye.hardMulti && mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0] && hitzoneRaw <= MINDS_EYE_THRESHOLD) {
+             if (mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0] && hitzoneRaw <= MINDS_EYE_THRESHOLD) {
+                 console.log(`Mind's Eye condition met for Raw ${hitzoneRaw} (<= ${MINDS_EYE_THRESHOLD}) and Multi ${mindsEyeMultiplierHard.toFixed(2)} (> ${skillData.mindsEye.hardMulti[0]})`); // Debug log
                  basePhysDmg *= mindsEyeMultiplierHard;
+                  console.log(`Physical Damage after Mind's Eye: ${basePhysDmg.toFixed(2)}`); // Debug log
+             } else {
+                  console.log(`Mind's Eye condition NOT met for Raw ${hitzoneRaw} (<= ${MINDS_EYE_THRESHOLD}: ${hitzoneRaw <= MINDS_EYE_THRESHOLD}) or Multi ${mindsEyeMultiplierHard.toFixed(2)} (> ${skillData.mindsEye.hardMulti[0]}: ${mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0]})`); // Debug log
              }
 
-
             const affinityDecimal = Math.max(0, Math.min(100, effectiveAffinity)) / 100;
-            const critExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critBoostMultiplier;
-            const totalPhysDmgPerHit = basePhysDmg * critExpectation;
+            const critExpectationPhys = (1 - affinityDecimal) * 1.0 + affinityDecimal * critBoostMultiplier;
+            const totalPhysDmgPerHit = basePhysDmg * critExpectationPhys;
+             console.log(`Total Physical Damage per hit (Crit Expectation ${critExpectationPhys.toFixed(3)}): ${totalPhysDmgPerHit.toFixed(2)}`); // Debug log
+
 
             // Elemental Damage
             const baseElemDmg = trueElemental * sharpnessElem * (hitzoneElem / 100);
+             console.log(`Base Elemental Damage: ${trueElemental.toFixed(2)} * ${sharpnessElem.toFixed(2)} * (${hitzoneElem} / 100) = ${baseElemDmg.toFixed(2)}`); // Debug log
+
             const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier;
             const totalElemDmgPerHit = baseElemDmg * critElemExpectation;
+             console.log(`Total Elemental Damage per hit (Crit Expectation ${critElemExpectation.toFixed(3)}): ${totalElemDmgPerHit.toFixed(2)}`); // Debug log
 
-            const totalDmg = totalPhysDmgPerHit + totalElemDmgPerHit; // Corrected summation
+
+            const totalDmg = totalPhysDmgPerHit + totalElemDmgPerHit;
+             console.log(`Total Damage per hit: ${totalPhysDmgPerHit.toFixed(2)} + ${totalElemDmgPerHit.toFixed(2)} = ${totalDmg.toFixed(2)}`); // Debug log
+
 
              if (!isFinite(totalDmg)) {
                  console.error("calculateDamagePerHit: Calculated damage is not finite.", totalDmg);
@@ -765,7 +800,7 @@
 
         // --- Main Calculation Function ---
         function calculateTotalDamage() {
-            console.log("Calculation started.");
+            console.log("--- Calculation started ---"); // Start log group
 
             if (!resultsDivElement) {
                  console.error("Results div element not found!");
@@ -791,6 +826,7 @@
             if (selectedAttackNames.length === 0) {
                  resultsDivElement.innerHTML = `<h3>${selectedMonster.name} に対する計算結果</h3><p>計算対象の攻撃が選択されていません。</p>`;
                  console.log("No attacks selected.");
+                 console.log("--- Calculation finished ---"); // End log group
                  return;
             }
 
@@ -799,6 +835,7 @@
              if (Object.values(primaryWeaponInputs).some(val => typeof val === 'number' && !isFinite(val))) {
                   console.error("Primary weapon inputs contain non-finite values.", primaryWeaponInputs);
                   resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>武器の入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
+                   console.log("--- Calculation finished with error ---"); // End log group
                    return;
               }
 
@@ -807,6 +844,7 @@
              if (Object.values(skillEffects).some(val => typeof val === 'number' && !isFinite(val))) {
                   console.error("Calculated skill effects contain non-finite values.", skillEffects);
                    resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>スキル効果の計算に問題が発生しました。</p>';
+                   console.log("--- Calculation finished with error ---"); // End log group
                    return;
              }
 
@@ -817,6 +855,7 @@
              if (!isFinite(trueRaw) || !isFinite(trueElemental)) {
                   console.error("True Raw or True Elemental is not finite.", {trueRaw, trueElemental});
                    resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>攻撃力・属性値の計算に問題が発生しました。</p>';
+                   console.log("--- Calculation finished with error ---"); // End log group
                    return;
              }
 
@@ -916,7 +955,7 @@
                  resultsHtml.unshift('<h3>計算エラー</h3><p>一部の部位のダメージ計算中に問題が発生しました。</p>');
                  console.error("Overall calculation finished with errors.");
             } else {
-                 console.log("Calculation finished successfully.");
+                 console.log("--- Calculation finished successfully ---"); // End log group
             }
 
             resultsDivElement.innerHTML = resultsHtml.join('');
