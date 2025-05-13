@@ -208,7 +208,9 @@
         <h2>MH Wilds 太刀 合計ダメージ計算ツール (詳細版)</h2>
         <p>選択した攻撃モーションの連携による合計ダメージを計算します。</p>
         <p>入力項目とスキルレベルを調整し、連携に含めたい攻撃にチェックを入れて「合計ダメージを計算」ボタンを押してください。</p>
-        <p>※モーション値・スキル効果・斬れ味補正値・モンスター肉質はコミュニティの検証情報に基づき、製品版と異なる場合があります。</p> <div class="section-title">武器基本性能</div>
+        <p>※モーション値・スキル効果・斬れ味補正値・モンスター肉質はコミュニティの検証情報に基づき、製品版と異なる場合があります。</p>
+
+        <div class="section-title">武器基本性能</div>
         <div><label for="baseRaw">武器基礎攻撃力:</label><input type="number" id="baseRaw" value="220"></div>
         <div><label for="baseAffinity">武器基礎会心率 (%):</label><input type="number" id="baseAffinity" value="5"></div>
         <div>
@@ -233,15 +235,18 @@
          </div>
 
 
-        <div class="section-title">モンスター選択と肉質情報</div> <div>
+        <div class="section-title">モンスター選択と肉質情報</div>
+         <div>
             <label for="monsterSelect">モンスター:</label>
              <select id="monsterSelect">
                  <option value="redaou" selected>レダウ</option>
                  <option value="arshubeldo">アルシュベルド</option>
              </select>
          </div>
-        <p id="hitzoneNote">※肉質情報は選択されたモンスターに基づきツールに組み込まれています。</p>
-         <div class="section-title">スキル設定</div>
+        <p id="hitzoneNote">※肉質情報は選択されたモンスターに基づきツールに組み込まれています。<br>レダウ肉質は歴戦王、アルシュベルド肉質は調査クエストの情報を参考にしています。</p>
+
+
+        <div class="section-title">スキル設定</div>
         <p>※チェックで有効/無効を切り替え、ドロップダウンでレベルを選択してください。</p>
 
         <div class="skill-category-title">武器スキル</div>
@@ -467,7 +472,7 @@
     </div>
     <script>
         // Define a key for localStorage
-        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v11'; // キーを更新して変更を反映
+        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v12'; // キーを更新して変更を反映
 
         // Global variable to hold all settings
         let allSettings = {};
@@ -509,12 +514,13 @@
         };
 
          // --- Monster Hitzone Data ---
+         // Note: Physical hitzones are for '斬' (cutting) damage for Taijutsu.
          const monsterHitzoneData = {
              redaou: {
                  name: '歴戦王レダウ',
                  hitzones: {
-                    head_normal: { name: '頭 (通常)', raw: 60, elem: { fire: 5, water: 15, thunder: 0, ice: 20, dragon: 5 } }, // Renamed
-                    head_wound:  { name: '頭 (傷口)', raw: 70, elem: { fire: 5, water: 20, thunder: 0, ice: 25, dragon: 5 } }, // Renamed
+                    head_normal: { name: '頭 (通常)', raw: 60, elem: { fire: 5, water: 15, thunder: 0, ice: 20, dragon: 5 } },
+                    head_wound:  { name: '頭 (傷口)', raw: 70, elem: { fire: 5, water: 20, thunder: 0, ice: 25, dragon: 5 } },
                     head_weak:   { name: '頭[弱点]',   raw: 80, elem: { fire: 5, water: 20, thunder: 0, ice: 25, dragon: 5 } },
                     body:        { name: '胴体',      raw: 30, elem: { fire: 5, water: 5,  thunder: 0, ice: 5,  dragon: 5 } },
                     wing:        { name: '翼',        raw: 45, elem: { fire: 5, water: 10, thunder: 0, ice: 15, dragon: 5 } },
@@ -526,19 +532,20 @@
              arshubeldo: {
                  name: 'アルシュベルド',
                  hitzones: {
-                    head_wound:    { name: '頭（傷口）',   raw: 45, elem: { fire: 5, water: 5,  thunder: 5, ice: 5,  dragon: 5 } }, // Using 斬肉質
-                    body:          { name: '胴体',        raw: 28, elem: { fire: 1, water: 1,  thunder: 1, ice: 1,  dragon: 5 } }, // Using 斬肉質
-                    wing:          { name: '翼',          raw: 42, elem: { fire: 2, water: 2,  thunder: 2, ice: 2,  dragon: 4 } }, // Using 斬肉質
-                    jawleg_wound:  { name: '顎脚（傷口）',   raw: 50, elem: { fire: 0, water: 0,  thunder: 0, ice: 0,  dragon: 0 } }, // Using 斬肉質
-                    jawleg_other:  { name: '顎脚（その他傷口）', raw: 70, elem: { fire: 30, water: 30, thunder: 30, ice: 30, dragon: 38 } }, // Using 斬肉質
-                    jawleg_weak:   { name: '顎脚[弱点]',     raw: 52, elem: { fire: 20, water: 20, thunder: 20, ice: 20, dragon: 25 } }, // Using 斬肉質
-                    leg:           { name: '脚',          raw: 26, elem: { fire: 2, water: 2,  thunder: 2, ice: 2,  dragon: 4 } }, // Using 斬肉質
-                    tail:          { name: '尻尾',        raw: 45, elem: { fire: 5, water: 5,  thunder: 5, ice: 5,  dragon: 5 } }, // Using 斬肉質
-                    tail_wound:    { name: '尻尾（その他傷口）', raw: 60, elem: { fire: 5, water: 5,  thunder: 10, ice: 5,  dragon: 15 } }, // Using 斬肉質
+                    head_wound:    { name: '頭（傷口）',   raw: 45, elem: { fire: 5, water: 5,  thunder: 5, ice: 5,  dragon: 5 } },
+                    body:          { name: '胴体',        raw: 28, elem: { fire: 1, water: 1,  thunder: 1, ice: 1,  dragon: 5 } },
+                    wing:          { name: '翼',          raw: 42, elem: { fire: 2, water: 2,  thunder: 2, ice: 2,  dragon: 4 } },
+                    jawleg_wound:  { name: '顎脚（傷口）',   raw: 50, elem: { fire: 0, water: 0,  thunder: 0, ice: 0,  dragon: 0 } },
+                    jawleg_other:  { name: '顎脚（その他傷口）', raw: 70, elem: { fire: 30, water: 30, thunder: 30, ice: 30, dragon: 38 } },
+                    jawleg_weak:   { name: '顎脚[弱点]',     raw: 52, elem: { fire: 20, water: 20, thunder: 20, ice: 20, dragon: 25 } },
+                    leg:           { name: '脚',          raw: 26, elem: { fire: 2, water: 2,  thunder: 2, ice: 2,  dragon: 4 } },
+                    tail:          { name: '尻尾',        raw: 45, elem: { fire: 5, water: 5,  thunder: 5, ice: 5,  dragon: 5 } },
+                    tail_wound:    { name: '尻尾（その他傷口）', raw: 60, elem: { fire: 5, water: 5,  thunder: 10, ice: 5,  dragon: 15 } },
                  }
              }
          };
          const MINDS_EYE_THRESHOLD = 44; // Physical hitzone <= 44
+         const WEX_THRESHOLD = 45; // Physical hitzone >= 45 for WEX
 
 
         // Get results div element once on load
@@ -640,7 +647,6 @@
                  mindsEyeMultiplierHard: skillData.mindsEye.hardMulti[0],
                  critElemMultiplier: skillData.critElem.multi[0],
                  nushiNoTamashiiRawMultiplier: 1.0,
-                 // WEX will be calculated based on hitzone raw in main calculation
                  weaknessExploitLevel: 0,
              };
 
@@ -709,14 +715,13 @@
         function calculateDamagePerHit(
             trueRaw, trueElemental, motionValue, sharpnessPhys, sharpnessElem,
             hitzoneRaw, hitzoneElem, effectiveAffinity, critBoostMultiplier,
-            mindsEyeMultiplierHard
+            mindsEyeMultiplierHard, critElemMultiplier // Added critElemMultiplier back
         ) {
             // Physical Damage
             let basePhysDmg = trueRaw * motionValue * sharpnessPhys * (hitzoneRaw / 100);
 
              // Apply Mind's Eye if skill is ON AND hitzone raw is <= threshold
              if (skillData.mindsEye && skillData.mindsEye.hardMulti && mindsEyeMultiplierHard > skillData.mindsEye.hardMulti[0] && hitzoneRaw <= MINDS_EYE_THRESHOLD) {
-                  // console.log(`Applying Mind's Eye multiplier (${mindsEyeMultiplierHard}) for hitzone raw ${hitzoneRaw}`); // Reduced log
                  basePhysDmg *= mindsEyeMultiplierHard;
              }
 
@@ -727,7 +732,7 @@
 
             // Elemental Damage
             const baseElemDmg = trueElemental * sharpnessElem * (hitzoneElem / 100);
-            const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier;
+            const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier; // Used critElemMultiplier here
             const totalElemDmgPerHit = baseElemDmg * critElemExpectation;
 
             const totalDmg = totalPhysDmgPerHit + totalElemDmgPerHit;
@@ -751,7 +756,7 @@
             }
 
             const weaponInputs = getWeaponInputs();
-            const selectedMonsterKey = safeGetSelectValue('monsterSelect', 'redaou'); // Get selected monster
+            const selectedMonsterKey = safeGetSelectValue('monsterSelect', 'redaou');
             const selectedMonster = monsterHitzoneData[selectedMonsterKey];
 
             if (!selectedMonster) {
@@ -766,16 +771,16 @@
 
             const selectedAttackNames = Object.keys(selectedAttacks);
             if (selectedAttackNames.length === 0) {
-                 resultsDivElement.innerHTML = '<h3>計算結果</h3><p>計算対象の攻撃が選択されていません。</p>';
+                 resultsDivElement.innerHTML = `<h3>${selectedMonster.name} に対する計算結果</h3><p>計算対象の攻撃が選択されていません。</p>`; // Update results title
                  console.log("No attacks selected.");
                  return;
             }
 
              // Check for NaN/Infinity in primary weapon inputs
-             const primaryWeaponInputs = { ...weaponInputs }; // Only weapon inputs have UI elements
+             const primaryWeaponInputs = { ...weaponInputs };
              if (Object.values(primaryWeaponInputs).some(val => typeof val === 'number' && !isFinite(val))) {
                   console.error("Primary weapon inputs contain non-finite values.", primaryWeaponInputs);
-                  resultsDivDivElement.innerHTML = '<h3>計算エラー</h3><p>武器の入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
+                  resultsDivElement.innerHTML = '<h3>計算エラー</h3><p>武器の入力値に無効なものがあります。数値が正しく入力されているか確認してください。</p>';
                    return;
               }
 
@@ -806,14 +811,13 @@
                 if (selectedMonster.hitzones.hasOwnProperty(hitzoneKey)) {
                     const hitzone = selectedMonster.hitzones[hitzoneKey];
                     const hitzoneRaw = hitzone.raw;
-                    const hitzoneElem = hitzone.elem[weaponInputs.weaponElement] ?? 0; // Get elemental hitzone based on selected weapon element
+                    const hitzoneElem = hitzone.elem[weaponInputs.weaponElement] ?? 0;
 
                      // Calculate Effective Affinity for this hitzone
                     let wexAffinity = 0;
                      // Check if WEX is enabled AND hitzone raw is 45 or above (WEX condition for weak spots >=45)
-                     if (skillSettings.weaknessExploit && skillSettings.weaknessExploit.enabled && hitzoneRaw >= 45) {
+                     if (skillSettings.weaknessExploit && skillSettings.weaknessExploit.enabled && hitzoneRaw >= WEX_THRESHOLD) {
                           wexAffinity = skillData.weaknessExploit.totalWoundedAff[skillEffects.weaknessExploitLevel] ?? 0;
-                          // console.log(`WEX Lv${skillEffects.weaknessExploitLevel} applied for hitzone ${hitzone.name} (Raw ${hitzoneRaw} >= 45), adding ${wexAffinity}% affinity.`); // Reduced log
                      }
 
                     const effectiveAffinity = calculateEffectiveAffinity(weaponInputs.baseAffinity, skillEffects.affinityAdd, wexAffinity);
@@ -835,7 +839,7 @@
                             const totalDmgPerHit = calculateDamagePerHit(
                                 trueRaw, trueElemental, attack.mv, weaponInputs.sharpnessPhys, weaponInputs.sharpnessElem,
                                 hitzoneRaw, hitzoneElem, effectiveAffinity,
-                                skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier
+                                skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier // Pass critElemMultiplier
                             );
 
                              if (!isFinite(totalDmgPerHit)) {
@@ -912,10 +916,9 @@
 
             const settingsToSave = {
                 weapon: getWeaponInputs(),
-                // hitzone data is fixed, no need to save
                 skills: getSkillSettings(),
                 attacks: {},
-                monster: safeGetSelectValue('monsterSelect', 'redaou') // Save selected monster
+                monster: safeGetSelectValue('monsterSelect', 'redaou')
             };
 
             const attackCheckboxes = document.querySelectorAll('.attack-checkbox');
