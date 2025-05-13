@@ -490,7 +490,7 @@
     </div>
     <script>
         // Define a key for localStorage
-        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v13'; // キーを更新して変更を反映
+        const localStorageKey = 'mhwilds_ls_calculator_multiple_settings_v14'; // キーを更新
 
         // Global variable to hold all settings
         let allSettings = {};
@@ -733,7 +733,7 @@
         function calculateDamagePerHit(
             trueRaw, trueElemental, motionValue, sharpnessPhys, sharpnessElem,
             hitzoneRaw, hitzoneElem, effectiveAffinity, critBoostMultiplier,
-            mindsEyeMultiplierHard, critElemMultiplier // critElemMultiplier is here
+            mindsEyeMultiplierHard, critElemMultiplier
         ) {
             // Physical Damage
             let basePhysDmg = trueRaw * motionValue * sharpnessPhys * (hitzoneRaw / 100);
@@ -753,7 +753,7 @@
             const critElemExpectation = (1 - affinityDecimal) * 1.0 + affinityDecimal * critElemMultiplier;
             const totalElemDmgPerHit = baseElemDmg * critElemExpectation;
 
-            const totalDmg = totalPhysDmgPerHit + totalPhysDmgPerHit; // FIX: Should be totalPhysDmgPerHit + totalElemDmgPerHit
+            const totalDmg = totalPhysDmgPerHit + totalElemDmgPerHit; // Corrected summation
 
              if (!isFinite(totalDmg)) {
                  console.error("calculateDamagePerHit: Calculated damage is not finite.", totalDmg);
@@ -868,19 +868,19 @@
                             const totalDmgPerHit = calculateDamagePerHit(
                                 trueRaw, trueElemental, attack.mv, weaponInputs.sharpnessPhys, weaponInputs.sharpnessElem,
                                 hitzoneRaw, hitzoneElem, effectiveAffinity,
-                                skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier // Pass critElemMultiplier
+                                skillEffects.critBoostMultiplier, skillEffects.mindsEyeMultiplierHard, skillEffects.critElemMultiplier
                             );
 
                              if (!isFinite(totalDmgPerHit)) {
                                   console.error(`Damage per hit for ${attackName} on ${hitzone.name} is not finite.`);
                                   hitzoneCalculationError = true;
-                                  break; // Stop processing attacks for this hitzone if one attack fails
+                                  break;
                              } else {
                                  const totalDmgForAttack = totalDmgPerHit * attack.hits;
                                   if (!isFinite(totalDmgForAttack)) {
                                       console.error(`Total damage for ${attackName} on ${hitzone.name} is not finite.`);
                                        hitzoneCalculationError = true;
-                                       break; // Stop processing attacks
+                                       break;
                                  } else {
                                       totalSequenceDamageForHitzone += totalDmgForAttack;
                                  }
@@ -910,7 +910,7 @@
             resultsHtml.push(`<p>属性会心倍率 (会心撃【属性】込み): ${skillEffects.critElemMultiplier.toFixed(2)}x</p>`);
             resultsHtml.push(`<p>心眼 硬い部位物理倍率: ${skillEffects.mindsEyeMultiplierHard.toFixed(2)}x (物理肉質 ${MINDS_EYE_THRESHOLD}以下で適用)</p>`);
             resultsHtml.push(`<p>物理斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessPhys.toFixed(2)}x</p>`);
-            resultsHtml.push(`<p>属性斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpessElem.toFixed(2)}x</p>`); // FIX: Typo in variable name
+            resultsHtml.push(`<p>属性斬れ味補正 (${getSharpnessColorName(weaponInputs.sharpnessColor)}): ${weaponInputs.sharpnessElem.toFixed(2)}x</p>`); // Corrected variable name
 
             if (overallCalculationErrorOccurred) {
                  resultsHtml.unshift('<h3>計算エラー</h3><p>一部の部位のダメージ計算中に問題が発生しました。</p>');
@@ -1038,7 +1038,8 @@
                 // Load sharpness color
                  const sharpnessColorEl = document.getElementById('sharpnessColor');
                  if (sharpnessColorEl) {
-                     sharpnessColorEl.value = settingsToLoad.weapon?.sharpnessColor ?? settingsToLoad.sharpnessColor ?? sharpnessColorEl.value; // Added fallback for older saves
+                     const savedSharpnessColor = settingsToLoad.weapon?.sharpnessColor ?? settingsToLoad.sharpnessColor; // Added fallback for older saves
+                     sharpnessColorEl.value = savedSharpnessColor ?? sharpnessColorEl.value;
                      if (!sharpnessData.hasOwnProperty(sharpnessColorEl.value)) {
                          sharpnessColorEl.value = 'white'; // Default if loaded value is invalid
                      }
@@ -1068,7 +1069,8 @@
                      }
                      if (levelSelectElement) {
                           const savedSkill = settingsToLoad.skills?.[skillId];
-                         levelSelectElement.value = savedSkill?.level ?? savedSkill?.level ?? levelSelectElement.value ?? levelSelectElement.options?.[0]?.value ?? 0; // Added fallback
+                          const savedLevel = savedSkill?.level ?? savedSkill?.level; // Added fallback
+                         levelSelectElement.value = savedLevel ?? levelSelectElement.value ?? levelSelectElement.options?.[0]?.value ?? 0;
                      }
                 });
 
